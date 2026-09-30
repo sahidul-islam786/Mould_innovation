@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+out/
+.next/
+.astro/
+.vercel/
+
+# Environment and secrets
+.env
+.env.*
+
+# Logs
+*.log
+
+# Local tool folders
+.playwright-mcp/
+.serena/
+.claude/settings.local.json
+
+# OS / editor
+.DS_Store
+Thumbs.db
