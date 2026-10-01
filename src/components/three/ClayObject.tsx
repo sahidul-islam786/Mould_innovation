@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef } from "react";
+import { useMemo, useRef } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 import { clayFragment, clayVertex } from "./clayShader";
@@ -20,45 +20,34 @@ export function ClayObject({ target, detail = 96, scale = 1, still = false }: Pr
   const mesh = useRef<THREE.Mesh>(null);
   const { size } = useThree();
 
-  const geometry = useMemo(() => new THREE.IcosahedronGeometry(1, detail), [detail]);
-  const material = useMemo(
-    () =>
-      new THREE.ShaderMaterial({
-        vertexShader: clayVertex,
-        fragmentShader: clayFragment,
-        uniforms: {
-          uTime: { value: 0 },
-          uAmp: { value: target.current.amp },
-          uFreq: { value: target.current.freq },
-          uSpeed: { value: target.current.speed },
-          uMorph: { value: target.current.morph },
-          uTwist: { value: target.current.twist },
-          uStretch: { value: target.current.stretch },
-          uGlow: { value: target.current.glow },
-          uPress: { value: 0 },
-          uPointer: { value: new THREE.Vector3(0, 0, 2) },
-          uRed: { value: new THREE.Color("#ed1c24") },
-          uMaroon: { value: new THREE.Color("#5e1e2d") },
-          uRim: { value: new THREE.Color("#ff4a50") },
-        },
-      }),
-    // Created once; later changes go through uniforms.
+  const mat = useRef<THREE.ShaderMaterial>(null);
+  // Initial uniform values; afterwards they are only changed through the material ref.
+  const uniforms = useMemo(
+    () => ({
+      uTime: { value: 0 },
+      uAmp: { value: target.current.amp },
+      uFreq: { value: target.current.freq },
+      uSpeed: { value: target.current.speed },
+      uMorph: { value: target.current.morph },
+      uTwist: { value: target.current.twist },
+      uStretch: { value: target.current.stretch },
+      uGlow: { value: target.current.glow },
+      uPress: { value: 0 },
+      uPointer: { value: new THREE.Vector3(0, 0, 2) },
+      uRed: { value: new THREE.Color("#ed1c24") },
+      uMaroon: { value: new THREE.Color("#5e1e2d") },
+      uRim: { value: new THREE.Color("#ff4a50") },
+    }),
+    // Created once per mount.
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [],
-  );
-
-  useEffect(
-    () => () => {
-      geometry.dispose();
-      material.dispose();
-    },
-    [geometry, material],
   );
 
   const pointerLocal = useMemo(() => new THREE.Vector3(), []);
 
   useFrame((state, delta) => {
-    const u = material.uniforms;
+    if (!mat.current) return;
+    const u = mat.current.uniforms;
     const t = target.current;
     const dt = Math.min(delta, 0.05);
     if (!still) u.uTime.value += dt;
@@ -89,5 +78,11 @@ export function ClayObject({ target, detail = 96, scale = 1, still = false }: Pr
     m.rotation.x = damp(m.rotation.x, -state.pointer.y * 0.25, 2, dt);
   });
 
-  return <mesh ref={mesh} geometry={geometry} material={material} scale={scale} />;
+  // Declared as JSX so react-three-fiber disposes geometry and material on unmount.
+  return (
+    <mesh ref={mesh} scale={scale}>
+      <icosahedronGeometry args={[1, detail]} />
+      <shaderMaterial ref={mat} vertexShader={clayVertex} fragmentShader={clayFragment} uniforms={uniforms} />
+    </mesh>
+  );
 }
