@@ -4,6 +4,7 @@ import "lenis/dist/lenis.css";
 import "./globals.css";
 import { Header } from "@/components/navigation/Header";
 import { Footer } from "@/components/footer/Footer";
+import { CtaBand } from "@/components/sections/CtaBand";
 import { SmoothScroll } from "@/components/motion/SmoothScroll";
 import { company } from "@/data/company";
 
@@ -28,7 +29,10 @@ export const viewport: Viewport = { themeColor: "#0b0b0c" };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${archivo.variable} antialiased`}>
+    <html lang="en" className={`${archivo.variable} antialiased`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+      </head>
       <body className="flex min-h-dvh flex-col">
         <a href="#main" className="skip-link">
           Skip to content
@@ -38,6 +42,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <main id="main" className="flex-1">
           {children}
         </main>
+        <CtaBand />
         <Footer />
         <div aria-hidden className="grain" />
       </body>

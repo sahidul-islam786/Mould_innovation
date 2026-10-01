@@ -26,7 +26,6 @@ export function Footer() {
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1.2fr_1fr_1.2fr]">
           <div className="flex flex-col items-start gap-6">
             <Logo height={56} />
-            <p className="font-semi-expanded max-w-[18ch] text-h3 font-bold">Your goals, our expertise.</p>
           </div>
 
           <Column title="Company">

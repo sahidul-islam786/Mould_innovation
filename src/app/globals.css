@@ -137,6 +137,60 @@ body {
   top: 1rem;
 }
 
+/* Page width container */
+.wrap {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 1600px;
+  padding-inline: var(--gutter);
+}
+
+/* Text revealed by GSAP stays out of view only when JS runs and motion is allowed,
+   so it is never lost if scripts fail. */
+@media (prefers-reduced-motion: no-preference) {
+  .js .reveal-text {
+    visibility: hidden;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Client logo marquee */
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: marquee 50s linear infinite;
+}
+
+.marquee:hover .marquee-track,
+.marquee:focus-within .marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+    flex-wrap: wrap;
+    width: auto;
+  }
+  .marquee-track [data-dup] {
+    display: none;
+  }
+}
+
 /* Film grain: a static SVG noise texture at low opacity over everything. */
 .grain {
   pointer-events: none;
