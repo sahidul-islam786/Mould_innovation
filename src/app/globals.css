@@ -1,0 +1,159 @@
+@import "tailwindcss";
+
+/* Design tokens from docs/superpowers/specs/2026-10-01-website-rebuild-design.md section 6.
+   Brand reds are measured from the logo pixels; contrast pairs are listed in the spec. */
+:root {
+  --brand-red: #ed1c24;
+  --brand-red-mid: #9d1d29;
+  --brand-red-dark: #5e1e2d;
+  --brand-red-light: #ff4a50;
+  --brand-red-press: #c8161d;
+
+  --ink: #0b0b0c;
+  --charcoal: #161618;
+  --charcoal-2: #202023;
+  --paper: #f4f2ee;
+  --muted-on-dark: #a3a09a;
+  --muted-on-light: #5c5a55;
+  --line-dark: rgb(255 255 255 / 0.12);
+  --line-light: rgb(0 0 0 / 0.12);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 150ms;
+  --dur-standard: 320ms;
+
+  /* Layout */
+  --gutter: clamp(1rem, 4vw, 3rem);
+  --header-h: 72px;
+}
+
+@theme inline {
+  --color-brand-red: var(--brand-red);
+  --color-brand-red-mid: var(--brand-red-mid);
+  --color-brand-red-dark: var(--brand-red-dark);
+  --color-brand-red-light: var(--brand-red-light);
+  --color-brand-red-press: var(--brand-red-press);
+  --color-ink: var(--ink);
+  --color-charcoal: var(--charcoal);
+  --color-charcoal-2: var(--charcoal-2);
+  --color-paper: var(--paper);
+  --color-muted-dark: var(--muted-on-dark);
+  --color-muted-light: var(--muted-on-light);
+  --color-line-dark: var(--line-dark);
+  --color-line-light: var(--line-light);
+
+  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+
+  /* Fluid type scale (spec 6.2) */
+  --text-display: clamp(3.5rem, 9vw, 8rem);
+  --text-display--line-height: 0.92;
+  --text-h1: clamp(2.75rem, 6vw, 5.5rem);
+  --text-h1--line-height: 0.98;
+  --text-h2: clamp(2rem, 4vw, 3.5rem);
+  --text-h2--line-height: 1.04;
+  --text-h3: clamp(1.375rem, 2vw, 1.75rem);
+  --text-h3--line-height: 1.2;
+  --text-body: clamp(1.0625rem, 1.1vw, 1.1875rem);
+  --text-body--line-height: 1.55;
+
+  --radius-control: 6px;
+}
+
+/* Base */
+html {
+  background: var(--ink);
+  color: var(--paper);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  line-height: 1.55;
+  background: var(--ink);
+  color: var(--paper);
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+
+/* Wide cut of Archivo for display type: echoes the logo wordmark. */
+.font-expanded {
+  font-stretch: 125%;
+  font-variation-settings: "wdth" 125;
+}
+
+.font-semi-expanded {
+  font-stretch: 112%;
+  font-variation-settings: "wdth" 112;
+}
+
+::selection {
+  background: var(--brand-red);
+  color: #fff;
+}
+
+/* Focus ring: logo red on dark, logo-gradient mid red on light surfaces. */
+:focus-visible {
+  outline: 2px solid var(--brand-red);
+  outline-offset: 3px;
+}
+
+.surface-paper :focus-visible {
+  outline-color: var(--brand-red-mid);
+}
+
+/* Surfaces */
+.surface-ink {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.surface-charcoal {
+  background: var(--charcoal);
+  color: var(--paper);
+}
+
+.surface-paper {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+/* Skip link: off-screen until focused */
+.skip-link {
+  position: fixed;
+  left: 1rem;
+  top: -100px;
+  z-index: 100;
+  padding: 0.75rem 1rem;
+  background: var(--paper);
+  color: var(--ink);
+  border-radius: var(--radius-control);
+  transition: top var(--dur-fast) var(--ease-out);
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* Film grain: a static SVG noise texture at low opacity over everything. */
+.grain {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
