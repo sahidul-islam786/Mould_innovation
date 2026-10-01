@@ -1,0 +1,53 @@
+{
+ "url": "https://www.mouldinnovation.com/saas",
+ "blocks": [
+  [
+   "li",
+   "Home"
+  ],
+  [
+   "li",
+   "About"
+  ],
+  [
+   "li",
+   "Projects"
+  ],
+  [
+   "li",
+   "Services"
+  ],
+  [
+   "li",
+   "SAAS"
+  ],
+  [
+   "li",
+   "Careers"
+  ],
+  [
+   "li",
+   "Contact Us"
+  ],
+  [
+   "h1",
+   "Software as a Service"
+  ],
+  [
+   "h2",
+   "Wow! Circle - Your 24x7 AI powered Assistance"
+  ],
+  [
+   "p",
+   "Harness the power of automation and AI to effortlessly capture leads, manage relationships, and grow your business."
+  ],
+  [
+   "h3",
+   "Why Choose Wow! Circle?"
+  ],
+  [
+   "p",
+   "At Wow! Circle, we simplify the way you network by focusing on three key actions: Capture, Connect, and Collaborate. These are the building blocks that help you strengthen relationships and grow your business seamlessly."
+  ]
+ ]
+}

@@ -1,0 +1,61 @@
+{
+ "url": "https://www.mouldinnovation.com/services/data-predictive-analytics",
+ "blocks": [
+  [
+   "li",
+   "Home"
+  ],
+  [
+   "li",
+   "About"
+  ],
+  [
+   "li",
+   "Projects"
+  ],
+  [
+   "li",
+   "Services"
+  ],
+  [
+   "li",
+   "SAAS"
+  ],
+  [
+   "li",
+   "Careers"
+  ],
+  [
+   "li",
+   "Contact Us"
+  ],
+  [
+   "h1",
+   "Data & Predictive Analytics"
+  ],
+  [
+   "h4",
+   "Predictive analytics, demand forecasting, time-series forecasting, churn prediction, LTV modeling, cohort analysis, attribution, marketing mix modeling (MMM), anomaly detection, KPI dashboards, dbt/ETL, SQL/Python, BigQuery/Postgres, Power BI/Looker"
+  ],
+  [
+   "h2",
+   "Clear dashboards and forecasts that guide sales, budgets, and operations."
+  ],
+  [
+   "p",
+   "Turn data into decisions. We build a metrics layer, BI dashboards, and forecasting models that predict demand, churn, LTV, and budgets."
+  ],
+  [
+   "p",
+   "What we deliver\n\n• KPI definition and data model\n\n• Pipelines (ETL/ELT) and governance\n\n• Dashboards for marketing, sales, ops, finance\n\n• Forecasting + anomaly detection\n\n• Experiment design and cohort analysis"
+  ],
+  [
+   "p",
+   "Outcomes\n\n• Single source of truth, clearer budgets, higher ROI and accountability."
+  ],
+  [
+   "p",
+   "Stack\n\nSQL/Python, dbt/ETL, BigQuery/Postgres, Looker/Power BI/Data Studio."
+  ]
+ ]
+}

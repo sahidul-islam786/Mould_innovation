@@ -1,0 +1,57 @@
+{
+ "url": "https://www.mouldinnovation.com/services/ai-consulting-llmops-governance",
+ "blocks": [
+  [
+   "li",
+   "Home"
+  ],
+  [
+   "li",
+   "About"
+  ],
+  [
+   "li",
+   "Projects"
+  ],
+  [
+   "li",
+   "Services"
+  ],
+  [
+   "li",
+   "SAAS"
+  ],
+  [
+   "li",
+   "Careers"
+  ],
+  [
+   "li",
+   "Contact Us"
+  ],
+  [
+   "h1",
+   "AI Strategy & Safe Scale"
+  ],
+  [
+   "h4",
+   "AI strategy, AI roadmap, AI governance, risk & compliance, LLMOps, prompt engineering, prompt evaluation, observability, vector DB governance, cost optimization, RBAC, data retention/PII, model selection (OpenAI, Claude, Gemini), security review"
+  ],
+  [
+   "h2",
+   "We map quick wins, set guardrails, and make your AI reliable in production."
+  ],
+  [
+   "p",
+   "Start right; scale safely. Opportunity Workshop + 90-day roadmap and production foundations for reliable AI."
+  ],
+  [
+   "p",
+   "What we cover\n\n• Use-case prioritization, ROI and risk\n\n• Data pipelines & vector stores\n\n• Prompt/version management and eval harness\n\n• Observability, cost dashboards, and RBAC\n\n• Policies for PII/model selection/retention"
+  ],
+  [
+   "p",
+   "Outcomes\n\n• Faster approvals, de-risked pilots, and operational AI you can trust."
+  ]
+ ]
+}

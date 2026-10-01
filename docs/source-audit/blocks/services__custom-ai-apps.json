@@ -1,0 +1,61 @@
+{
+ "url": "https://www.mouldinnovation.com/services/custom-ai-apps",
+ "blocks": [
+  [
+   "li",
+   "Home"
+  ],
+  [
+   "li",
+   "About"
+  ],
+  [
+   "li",
+   "Projects"
+  ],
+  [
+   "li",
+   "Services"
+  ],
+  [
+   "li",
+   "SAAS"
+  ],
+  [
+   "li",
+   "Careers"
+  ],
+  [
+   "li",
+   "Contact Us"
+  ],
+  [
+   "h1",
+   "Custom AI Apps & Integrations"
+  ],
+  [
+   "h4",
+   "Custom AI app, copilot, RAG, embeddings, vector database, Pinecone/Weaviate/FAISS, LangChain, function calling, secure APIs, OAuth/SSO, fine-tuning, plugin/actions, GraphQL/REST, React/Node/Python, CI/CD, telemetry"
+  ],
+  [
+   "h2",
+   "We add smart search, summaries, and one-click actions to your app or website—secure and production-ready."
+  ],
+  [
+   "p",
+   "Build internal copilots and customer-facing AI features—search, summarize, recommend, and take actions via function calling."
+  ],
+  [
+   "p",
+   "Use cases\n\n• Sales/Knowledge copilots\n\n• Claims & document automation (OCR + extraction)\n\n• Intelligent search over PDFs/DBs\n\n• Recommendation and personalization"
+  ],
+  [
+   "p",
+   "What you get\n\n• PRD and UX flows\n\n• RAG or function-calling architecture\n\n• Secure API layer and auth\n\n• CI/CD, telemetry, and cost controls\n\n• Rollout, training, and support"
+  ],
+  [
+   "p",
+   "Outcomes\n\n• Differentiated UX, faster decisions, measurable productivity.\n\n• Typical MVP: 45–60 days."
+  ]
+ ]
+}

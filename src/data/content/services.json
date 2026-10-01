@@ -1,0 +1,188 @@
+{
+  "ai-automation-agents": {
+    "title": "AI Automation & Agents",
+    "keywords": "AI automation, AI agents, agentic AI, autonomous agents, digital workers, workflow automation, Zapier, Make, API integration, webhooks, CRM integration, ERP integration, Salesforce, HubSpot, Google Workspace automation, Slack/Teams automation, function calling, tool use, RPA alternative, BPM/orchestration, SOP automation, KPI tracking",
+    "headline": "Bold. Provocative. Beautiful.",
+    "description": "Design and deploy AI agents that take action across your tools—no-code where it’s faster, APIs where it’s smarter. Built for Sales, Support, Ops, Finance, and HR with logging, guardrails, and KPIs.",
+    "sections": [
+      {
+        "label": "What it solves",
+        "items": [
+          "Repetitive workflows, slow follow-ups, manual data entry, report creation."
+        ]
+      },
+      {
+        "label": "What you get",
+        "items": [
+          "Use-case audit and ROI model",
+          "Agent flowcharts and prompts",
+          "Integrations (OpenAI + Zapier/Make/APIs/DB)",
+          "Test plan, observability, access controls",
+          "Playbooks and handover docs"
+        ]
+      },
+      {
+        "label": "Outcomes",
+        "items": [
+          "Hours saved per week, faster TAT, higher conversion and NPS.",
+          "Typical pilot: ~30 days."
+        ]
+      },
+      {
+        "label": "Stack",
+        "text": "OpenAI, Zapier/Make, webhooks, CRM/ERP, Google Workspace, Slack/Teams."
+      }
+    ]
+  },
+  "ai-chatbots-voicebots": {
+    "title": "AI Chatbots & Voicebots",
+    "keywords": "AI chatbot development, WhatsApp chatbot, WhatsApp Business API, website chat widget, voice AI, IVR automation, contact center AI, call summarization, RAG chatbot, knowledge base bot, human handover, multilingual support, lead qualification bot, CSAT analytics, Dialogflow/Twilio",
+    "headline": "Helpful bots that handle questions, bookings, and follow-ups 24×7 with smooth human handover.",
+    "description": "LLM-powered chat and voice assistants that actually resolve queries. Website, WhatsApp, mobile app, and phone/IVR with human handover and analytics.",
+    "sections": [
+      {
+        "label": "Where it helps",
+        "items": [
+          "Ecommerce support and returns",
+          "Hospitality concierge and bookings",
+          "Education/admissions Q&A",
+          "Lead qualification and meeting scheduling"
+        ]
+      },
+      {
+        "label": "What you get",
+        "items": [
+          "Conversation design + intents",
+          "RAG from your KB/CRM/files",
+          "Channel setup (web widget, WhatsApp, telephony)",
+          "Guardrails, tone, escalation rules",
+          "Dashboard for deflection, CSAT, and AHT"
+        ]
+      },
+      {
+        "label": "Outcomes",
+        "items": [
+          "24×7 self-serve, lower ticket volume, faster response, more qualified leads."
+        ]
+      }
+    ]
+  },
+  "custom-ai-apps": {
+    "title": "Custom AI Apps & Integrations",
+    "keywords": "Custom AI app, copilot, RAG, embeddings, vector database, Pinecone/Weaviate/FAISS, LangChain, function calling, secure APIs, OAuth/SSO, fine-tuning, plugin/actions, GraphQL/REST, React/Node/Python, CI/CD, telemetry",
+    "headline": "We add smart search, summaries, and one-click actions to your app or website—secure and production-ready.",
+    "description": "Build internal copilots and customer-facing AI features—search, summarize, recommend, and take actions via function calling.",
+    "sections": [
+      {
+        "label": "Use cases",
+        "items": [
+          "Sales/Knowledge copilots",
+          "Claims & document automation (OCR + extraction)",
+          "Intelligent search over PDFs/DBs",
+          "Recommendation and personalization"
+        ]
+      },
+      {
+        "label": "What you get",
+        "items": [
+          "PRD and UX flows",
+          "RAG or function-calling architecture",
+          "Secure API layer and auth",
+          "CI/CD, telemetry, and cost controls",
+          "Rollout, training, and support"
+        ]
+      },
+      {
+        "label": "Outcomes",
+        "items": [
+          "Differentiated UX, faster decisions, measurable productivity.",
+          "Typical MVP: 45–60 days."
+        ]
+      }
+    ]
+  },
+  "data-predictive-analytics": {
+    "title": "Data & Predictive Analytics",
+    "keywords": "Predictive analytics, demand forecasting, time-series forecasting, churn prediction, LTV modeling, cohort analysis, attribution, marketing mix modeling (MMM), anomaly detection, KPI dashboards, dbt/ETL, SQL/Python, BigQuery/Postgres, Power BI/Looker",
+    "headline": "Clear dashboards and forecasts that guide sales, budgets, and operations.",
+    "description": "Turn data into decisions. We build a metrics layer, BI dashboards, and forecasting models that predict demand, churn, LTV, and budgets.",
+    "sections": [
+      {
+        "label": "What we deliver",
+        "items": [
+          "KPI definition and data model",
+          "Pipelines (ETL/ELT) and governance",
+          "Dashboards for marketing, sales, ops, finance",
+          "Forecasting + anomaly detection",
+          "Experiment design and cohort analysis"
+        ]
+      },
+      {
+        "label": "Outcomes",
+        "items": [
+          "Single source of truth, clearer budgets, higher ROI and accountability."
+        ]
+      },
+      {
+        "label": "Stack",
+        "text": "SQL/Python, dbt/ETL, BigQuery/Postgres, Looker/Power BI/Data Studio."
+      }
+    ]
+  },
+  "computer-vision-visual-search": {
+    "title": "Computer Vision & Visual Search",
+    "keywords": "Computer vision, image classification, object detection, defect detection, OCR/document AI, pose/PPE detection, retail shelf analytics, SKU recognition, similarity/visual search, OpenCV, PyTorch, edge inference, model monitoring",
+    "headline": "Spot defects, enforce safety, and let shoppers find similar items with visual search.",
+    "description": "Use images and video as data. From defect detection and safety to visual search for retail/fashion, we design CV pipelines that spot patterns and power discovery.",
+    "sections": [
+      {
+        "label": "Use cases",
+        "items": [
+          "Quality control and anomaly detection",
+          "PPE/safety compliance",
+          "SKU recognition and shelf analytics",
+          "Visual search and similar-item discovery"
+        ]
+      },
+      {
+        "label": "What you get",
+        "items": [
+          "Dataset strategy and labeling loop",
+          "Model selection and evaluation plan",
+          "Edge/cloud inference pipeline",
+          "Monitoring, retraining, and A/B tests"
+        ]
+      },
+      {
+        "label": "Outcomes",
+        "items": [
+          "Fewer errors, safer floors, higher discovery and conversion."
+        ]
+      }
+    ]
+  },
+  "ai-consulting-llmops-governance": {
+    "title": "AI Strategy & Safe Scale",
+    "keywords": "AI strategy, AI roadmap, AI governance, risk & compliance, LLMOps, prompt engineering, prompt evaluation, observability, vector DB governance, cost optimization, RBAC, data retention/PII, model selection (OpenAI, Claude, Gemini), security review",
+    "headline": "We map quick wins, set guardrails, and make your AI reliable in production.",
+    "description": "Start right; scale safely. Opportunity Workshop + 90-day roadmap and production foundations for reliable AI.",
+    "sections": [
+      {
+        "label": "What we cover",
+        "items": [
+          "Use-case prioritization, ROI and risk",
+          "Data pipelines & vector stores",
+          "Prompt/version management and eval harness",
+          "Observability, cost dashboards, and RBAC",
+          "Policies for PII/model selection/retention"
+        ]
+      },
+      {
+        "label": "Outcomes",
+        "items": [
+          "Faster approvals, de-risked pilots, and operational AI you can trust."
+        ]
+      }
+    ]
+  }
+}

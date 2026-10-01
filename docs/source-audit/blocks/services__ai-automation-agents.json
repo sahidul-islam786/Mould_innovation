@@ -1,0 +1,65 @@
+{
+ "url": "https://www.mouldinnovation.com/services/ai-automation-agents",
+ "blocks": [
+  [
+   "li",
+   "Home"
+  ],
+  [
+   "li",
+   "About"
+  ],
+  [
+   "li",
+   "Projects"
+  ],
+  [
+   "li",
+   "Services"
+  ],
+  [
+   "li",
+   "SAAS"
+  ],
+  [
+   "li",
+   "Careers"
+  ],
+  [
+   "li",
+   "Contact Us"
+  ],
+  [
+   "h1",
+   "AI Automation & Agents"
+  ],
+  [
+   "h4",
+   "AI automation, AI agents, agentic AI, autonomous agents, digital workers, workflow automation, Zapier, Make, API integration, webhooks, CRM integration, ERP integration, Salesforce, HubSpot, Google Workspace automation, Slack/Teams automation, function calling, tool use, RPA alternative, BPM/orchestration, SOP automation, KPI tracking"
+  ],
+  [
+   "h2",
+   "Bold. Provocative. Beautiful."
+  ],
+  [
+   "p",
+   "Design and deploy AI agents that take action across your tools—no-code where it’s faster, APIs where it’s smarter. Built for Sales, Support, Ops, Finance, and HR with logging, guardrails, and KPIs."
+  ],
+  [
+   "p",
+   "What it solves\n\n• Repetitive workflows, slow follow-ups, manual data entry, report creation."
+  ],
+  [
+   "p",
+   "What you get\n\n• Use-case audit and ROI model\n\n• Agent flowcharts and prompts\n\n• Integrations (OpenAI + Zapier/Make/APIs/DB)\n\n• Test plan, observability, access controls\n\n• Playbooks and handover docs"
+  ],
+  [
+   "p",
+   "Outcomes\n\n• Hours saved per week, faster TAT, higher conversion and NPS.\n\n• Typical pilot: ~30 days."
+  ],
+  [
+   "p",
+   "Stack\n\nOpenAI, Zapier/Make, webhooks, CRM/ERP, Google Workspace, Slack/Teams."
+  ]
+ ]
+}

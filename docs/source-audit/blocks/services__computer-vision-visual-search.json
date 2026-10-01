@@ -1,0 +1,61 @@
+{
+ "url": "https://www.mouldinnovation.com/services/computer-vision-visual-search",
+ "blocks": [
+  [
+   "li",
+   "Home"
+  ],
+  [
+   "li",
+   "About"
+  ],
+  [
+   "li",
+   "Projects"
+  ],
+  [
+   "li",
+   "Services"
+  ],
+  [
+   "li",
+   "SAAS"
+  ],
+  [
+   "li",
+   "Careers"
+  ],
+  [
+   "li",
+   "Contact Us"
+  ],
+  [
+   "h1",
+   "Computer Vision & Visual Search"
+  ],
+  [
+   "h4",
+   "Computer vision, image classification, object detection, defect detection, OCR/document AI, pose/PPE detection, retail shelf analytics, SKU recognition, similarity/visual search, OpenCV, PyTorch, edge inference, model monitoring"
+  ],
+  [
+   "h2",
+   "Spot defects, enforce safety, and let shoppers find similar items with visual search."
+  ],
+  [
+   "p",
+   "Use images and video as data. From defect detection and safety to visual search for retail/fashion, we design CV pipelines that spot patterns and power discovery."
+  ],
+  [
+   "p",
+   "Use cases\n\n• Quality control and anomaly detection\n\n• PPE/safety compliance\n\n• SKU recognition and shelf analytics\n\n• Visual search and similar-item discovery"
+  ],
+  [
+   "p",
+   "What you get\n\n• Dataset strategy and labeling loop\n\n• Model selection and evaluation plan\n\n• Edge/cloud inference pipeline\n\n• Monitoring, retraining, and A/B tests"
+  ],
+  [
+   "p",
+   "Outcomes\n\n• Fewer errors, safer floors, higher discovery and conversion."
+  ]
+ ]
+}
