@@ -13,9 +13,11 @@
 - Reference material for the upgrade will be shared by the user; do not assume it.
 
 ## 3. Stack
-- Frontend: not decided yet (decide via an approved spec).
+- Frontend: Next.js 16 (App Router, static export to out/), TypeScript, Tailwind v4, three + React Three Fiber + drei, GSAP + ScrollTrigger, Lenis. Decided in docs/superpowers/specs/2026-10-01-website-rebuild-design.md.
+- Next.js 16 has breaking API changes: read node_modules/next/dist/docs/ before using an API (see AGENTS.md, which next dev maintains).
 - Backend: none.
 - Database: none.
+- Commands: npm run build (static export + type check), npm run lint, node scripts/fetch-assets.mjs (re-download live-site images).
 
 ## 4. Hard rules
 1. Spec first: use the Superpowers workflow (brainstorming -> writing-plans -> executing-plans / subagent-driven-development). No feature code before an approved design saved in docs/superpowers/specs/YYYY-MM-DD-<topic>-design.md. Plans go in docs/superpowers/plans/. Trivial one-line fixes do not need a spec.

@@ -1,0 +1,312 @@
+{
+  "logo": {
+    "src": "/brand/logo.png",
+    "width": 548,
+    "height": 408
+  },
+  "clients": [
+    {
+      "name": "Indian Army",
+      "src": "/brand/clients/01-indian-army.jpg",
+      "width": 500,
+      "height": 500
+    },
+    {
+      "name": "BB",
+      "src": "/brand/clients/02-bb.jpg",
+      "width": 500,
+      "height": 500
+    },
+    {
+      "name": "ATKMB",
+      "src": "/brand/clients/03-atkmb.jpg",
+      "width": 500,
+      "height": 500
+    },
+    {
+      "name": "ICBI(1)",
+      "src": "/brand/clients/04-icbi-1.jpg",
+      "width": 500,
+      "height": 500
+    },
+    {
+      "name": "RPSG",
+      "src": "/brand/clients/05-rpsg.jpg",
+      "width": 500,
+      "height": 500
+    },
+    {
+      "name": "PRI",
+      "src": "/brand/clients/06-pri.jpg",
+      "width": 500,
+      "height": 500
+    },
+    {
+      "name": "FC",
+      "src": "/brand/clients/07-fc.jpg",
+      "width": 500,
+      "height": 500
+    },
+    {
+      "name": "Sj",
+      "src": "/brand/clients/08-sj.jpg",
+      "width": 500,
+      "height": 500
+    },
+    {
+      "name": "ICBI",
+      "src": "/brand/clients/09-icbi.jpg",
+      "width": 500,
+      "height": 500
+    },
+    {
+      "name": "Rotary",
+      "src": "/brand/clients/10-rotary.jpg",
+      "width": 500,
+      "height": 500
+    },
+    {
+      "name": "TNU",
+      "src": "/brand/clients/11-tnu.jpg",
+      "width": 500,
+      "height": 500
+    },
+    {
+      "name": "Cucumber",
+      "src": "/brand/clients/12-cucumber.jpg",
+      "width": 500,
+      "height": 500
+    },
+    {
+      "name": "85L",
+      "src": "/brand/clients/13-85l.jpg",
+      "width": 500,
+      "height": 500
+    }
+  ],
+  "about": [
+    {
+      "credit": "Image by Sharon McCutcheon",
+      "src": "/media/about/about-1-1600.webp",
+      "srcSet": "/media/about/about-1-800.webp 800w, /media/about/about-1-1600.webp 1600w",
+      "width": 1600,
+      "height": 2400
+    },
+    {
+      "credit": "Image by ThisisEngineering RAEng",
+      "src": "/media/about/about-2-1600.webp",
+      "srcSet": "/media/about/about-2-800.webp 800w, /media/about/about-2-1600.webp 1600w",
+      "width": 1600,
+      "height": 2400
+    }
+  ],
+  "projects": {
+    "atkmb": {
+      "cover": {
+        "src": "/media/projects/atkmb/cover.jpg",
+        "width": 1000,
+        "height": 1000
+      },
+      "gallery": [
+        {
+          "src": "/media/projects/atkmb/01-1000.webp",
+          "srcSet": "/media/projects/atkmb/01-800.webp 800w, /media/projects/atkmb/01-1000.webp 1000w",
+          "width": 1000,
+          "height": 1000
+        },
+        {
+          "src": "/media/projects/atkmb/02-1000.webp",
+          "srcSet": "/media/projects/atkmb/02-800.webp 800w, /media/projects/atkmb/02-1000.webp 1000w",
+          "width": 1000,
+          "height": 1000
+        },
+        {
+          "src": "/media/projects/atkmb/03-1000.webp",
+          "srcSet": "/media/projects/atkmb/03-800.webp 800w, /media/projects/atkmb/03-1000.webp 1000w",
+          "width": 1000,
+          "height": 1000
+        },
+        {
+          "src": "/media/projects/atkmb/04-1000.webp",
+          "srcSet": "/media/projects/atkmb/04-800.webp 800w, /media/projects/atkmb/04-1000.webp 1000w",
+          "width": 1000,
+          "height": 1000
+        },
+        {
+          "src": "/media/projects/atkmb/05-1000.webp",
+          "srcSet": "/media/projects/atkmb/05-800.webp 800w, /media/projects/atkmb/05-1000.webp 1000w",
+          "width": 1000,
+          "height": 1000
+        },
+        {
+          "src": "/media/projects/atkmb/06-1000.webp",
+          "srcSet": "/media/projects/atkmb/06-800.webp 800w, /media/projects/atkmb/06-1000.webp 1000w",
+          "width": 1000,
+          "height": 1000
+        },
+        {
+          "src": "/media/projects/atkmb/07-1000.webp",
+          "srcSet": "/media/projects/atkmb/07-800.webp 800w, /media/projects/atkmb/07-1000.webp 1000w",
+          "width": 1000,
+          "height": 1000
+        },
+        {
+          "src": "/media/projects/atkmb/08-1080.webp",
+          "srcSet": "/media/projects/atkmb/08-800.webp 800w, /media/projects/atkmb/08-1080.webp 1080w",
+          "width": 1080,
+          "height": 1080
+        },
+        {
+          "src": "/media/projects/atkmb/09-480.webp",
+          "width": 480,
+          "height": 480,
+          "animated": true
+        },
+        {
+          "src": "/media/projects/atkmb/10-1000.webp",
+          "srcSet": "/media/projects/atkmb/10-800.webp 800w, /media/projects/atkmb/10-1000.webp 1000w",
+          "width": 1000,
+          "height": 1000
+        },
+        {
+          "src": "/media/projects/atkmb/11-1080.webp",
+          "srcSet": "/media/projects/atkmb/11-800.webp 800w, /media/projects/atkmb/11-1080.webp 1080w",
+          "width": 1080,
+          "height": 1350
+        },
+        {
+          "src": "/media/projects/atkmb/12-1000.webp",
+          "srcSet": "/media/projects/atkmb/12-800.webp 800w, /media/projects/atkmb/12-1000.webp 1000w",
+          "width": 1000,
+          "height": 1000
+        }
+      ]
+    },
+    "85-lansdowne": {
+      "cover": {
+        "src": "/media/projects/85-lansdowne/cover.jpg",
+        "width": 2048,
+        "height": 758
+      },
+      "gallery": [
+        {
+          "src": "/media/projects/85-lansdowne/01-1600.webp",
+          "srcSet": "/media/projects/85-lansdowne/01-800.webp 800w, /media/projects/85-lansdowne/01-1600.webp 1600w",
+          "width": 1600,
+          "height": 750
+        },
+        {
+          "src": "/media/projects/85-lansdowne/02-1000.webp",
+          "srcSet": "/media/projects/85-lansdowne/02-800.webp 800w, /media/projects/85-lansdowne/02-1000.webp 1000w",
+          "width": 1000,
+          "height": 1000
+        },
+        {
+          "src": "/media/projects/85-lansdowne/03-1000.webp",
+          "srcSet": "/media/projects/85-lansdowne/03-800.webp 800w, /media/projects/85-lansdowne/03-1000.webp 1000w",
+          "width": 1000,
+          "height": 1000
+        },
+        {
+          "src": "/media/projects/85-lansdowne/04-1000.webp",
+          "srcSet": "/media/projects/85-lansdowne/04-800.webp 800w, /media/projects/85-lansdowne/04-1000.webp 1000w",
+          "width": 1000,
+          "height": 1000
+        },
+        {
+          "src": "/media/projects/85-lansdowne/05-1000.webp",
+          "srcSet": "/media/projects/85-lansdowne/05-800.webp 800w, /media/projects/85-lansdowne/05-1000.webp 1000w",
+          "width": 1000,
+          "height": 1000
+        },
+        {
+          "src": "/media/projects/85-lansdowne/06-1600.webp",
+          "srcSet": "/media/projects/85-lansdowne/06-800.webp 800w, /media/projects/85-lansdowne/06-1600.webp 1600w",
+          "width": 1600,
+          "height": 1603
+        },
+        {
+          "src": "/media/projects/85-lansdowne/07-1080.webp",
+          "srcSet": "/media/projects/85-lansdowne/07-800.webp 800w, /media/projects/85-lansdowne/07-1080.webp 1080w",
+          "width": 1080,
+          "height": 1080
+        },
+        {
+          "src": "/media/projects/85-lansdowne/08-1080.webp",
+          "srcSet": "/media/projects/85-lansdowne/08-800.webp 800w, /media/projects/85-lansdowne/08-1080.webp 1080w",
+          "width": 1080,
+          "height": 1920
+        },
+        {
+          "src": "/media/projects/85-lansdowne/09-1080.webp",
+          "srcSet": "/media/projects/85-lansdowne/09-800.webp 800w, /media/projects/85-lansdowne/09-1080.webp 1080w",
+          "width": 1080,
+          "height": 1920
+        }
+      ]
+    },
+    "cucumber-kidswear": {
+      "cover": {
+        "src": "/media/projects/cucumber-kidswear/cover.jpg",
+        "width": 820,
+        "height": 312
+      },
+      "gallery": [
+        {
+          "src": "/media/projects/cucumber-kidswear/01-1000.webp",
+          "srcSet": "/media/projects/cucumber-kidswear/01-800.webp 800w, /media/projects/cucumber-kidswear/01-1000.webp 1000w",
+          "width": 1000,
+          "height": 1000
+        },
+        {
+          "src": "/media/projects/cucumber-kidswear/02-1000.webp",
+          "srcSet": "/media/projects/cucumber-kidswear/02-800.webp 800w, /media/projects/cucumber-kidswear/02-1000.webp 1000w",
+          "width": 1000,
+          "height": 1000
+        },
+        {
+          "src": "/media/projects/cucumber-kidswear/03-1000.webp",
+          "srcSet": "/media/projects/cucumber-kidswear/03-800.webp 800w, /media/projects/cucumber-kidswear/03-1000.webp 1000w",
+          "width": 1000,
+          "height": 1000
+        },
+        {
+          "src": "/media/projects/cucumber-kidswear/04-1000.webp",
+          "srcSet": "/media/projects/cucumber-kidswear/04-800.webp 800w, /media/projects/cucumber-kidswear/04-1000.webp 1000w",
+          "width": 1000,
+          "height": 1000
+        },
+        {
+          "src": "/media/projects/cucumber-kidswear/05-1000.webp",
+          "srcSet": "/media/projects/cucumber-kidswear/05-800.webp 800w, /media/projects/cucumber-kidswear/05-1000.webp 1000w",
+          "width": 1000,
+          "height": 1000
+        },
+        {
+          "src": "/media/projects/cucumber-kidswear/06-1000.webp",
+          "srcSet": "/media/projects/cucumber-kidswear/06-800.webp 800w, /media/projects/cucumber-kidswear/06-1000.webp 1000w",
+          "width": 1000,
+          "height": 1000
+        },
+        {
+          "src": "/media/projects/cucumber-kidswear/07-1000.webp",
+          "srcSet": "/media/projects/cucumber-kidswear/07-800.webp 800w, /media/projects/cucumber-kidswear/07-1000.webp 1000w",
+          "width": 1000,
+          "height": 1000
+        },
+        {
+          "src": "/media/projects/cucumber-kidswear/08-1000.webp",
+          "srcSet": "/media/projects/cucumber-kidswear/08-800.webp 800w, /media/projects/cucumber-kidswear/08-1000.webp 1000w",
+          "width": 1000,
+          "height": 1000
+        },
+        {
+          "src": "/media/projects/cucumber-kidswear/09-1000.webp",
+          "srcSet": "/media/projects/cucumber-kidswear/09-800.webp 800w, /media/projects/cucumber-kidswear/09-1000.webp 1000w",
+          "width": 1000,
+          "height": 1000
+        }
+      ]
+    }
+  }
+}
