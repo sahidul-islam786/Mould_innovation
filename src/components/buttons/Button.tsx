@@ -4,12 +4,12 @@ import type { ComponentProps, ReactNode } from "react";
 type Variant = "primary" | "ghost";
 
 const base =
-  "inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-6 text-[0.95rem] font-medium tracking-[-0.01em] transition-[background-color,color,border-color,transform] duration-[var(--dur-fast)] ease-[var(--ease-out)] active:scale-[0.98]";
+  "inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-6 text-[0.95rem] font-medium tracking-[-0.01em] transition-[background-color,color,border-color,transform,box-shadow] duration-[var(--dur-fast)] ease-[var(--ease-out)] active:scale-[0.98]";
 
 const variants: Record<Variant, string> = {
   // White on --brand-red-press is 5.85:1 (the exact logo red would be 4.38:1).
-  primary: "bg-brand-red-press text-white hover:bg-brand-red",
-  ghost: "border border-current/30 hover:border-current",
+  primary: "bg-brand-red-press text-white hover:bg-brand-red hover:shadow-[0_0_32px_-6px_rgb(237_28_36/0.7)]",
+  ghost: "border border-current/30 hover:border-current hover:bg-white/[0.04]",
 };
 
 type Props = { variant?: Variant; href: string; children: ReactNode } & Omit<ComponentProps<"a">, "href">;

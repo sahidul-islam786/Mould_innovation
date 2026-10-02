@@ -16,23 +16,28 @@ function hasWebGL() {
   }
 }
 
-// Static stand-in: the formed hexagon in the logo gradient, also the no-WebGL fallback.
+// Static stand-in: a black-glass hexagon with red light, also the no-WebGL / reduced-data fallback.
 export function ClayPoster({ className = "" }: { className?: string }) {
   return (
     <svg viewBox="0 0 200 200" className={className} aria-hidden>
       <defs>
-        <linearGradient id="clay-g" x1="0" y1="0" x2="1" y2="0.3">
+        <linearGradient id="clay-body" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor="#2a2a2e" />
+          <stop offset="0.45" stopColor="#0b0b0c" />
+          <stop offset="1" stopColor="#151517" />
+        </linearGradient>
+        <linearGradient id="clay-edge" x1="0" y1="1" x2="1" y2="0">
           <stop offset="0" stopColor="#ed1c24" />
-          <stop offset="0.55" stopColor="#9d1d29" />
-          <stop offset="1" stopColor="#5e1e2d" />
+          <stop offset="0.5" stopColor="#5e1e2d" stopOpacity="0.3" />
+          <stop offset="1" stopColor="#ffffff" stopOpacity="0.35" />
         </linearGradient>
         <radialGradient id="clay-glow">
-          <stop offset="0" stopColor="#ed1c24" stopOpacity="0.35" />
+          <stop offset="0" stopColor="#ed1c24" stopOpacity="0.22" />
           <stop offset="1" stopColor="#ed1c24" stopOpacity="0" />
         </radialGradient>
       </defs>
       <circle cx="100" cy="100" r="96" fill="url(#clay-glow)" />
-      <polygon points="100,38 154,69 154,131 100,162 46,131 46,69" fill="url(#clay-g)" />
+      <polygon points="100,38 154,69 154,131 100,162 46,131 46,69" fill="url(#clay-body)" stroke="url(#clay-edge)" strokeWidth="1.5" />
     </svg>
   );
 }

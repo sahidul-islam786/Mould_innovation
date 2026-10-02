@@ -5,7 +5,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { Clay } from "@/components/three/Clay";
-import { raw, lerpParams, hexagon, type ClayParams } from "@/components/three/presets";
+import { raw, stageAt, type ClayParams } from "@/components/three/presets";
 import { RevealText } from "@/components/motion/RevealText";
 import { Button } from "@/components/buttons/Button";
 import { Magnetic } from "@/components/motion/Magnetic";
@@ -25,7 +25,7 @@ export function HomeHero() {
         trigger: section.current,
         start: "top top",
         end: "bottom top",
-        onUpdate: (st) => Object.assign(target.current, lerpParams(raw, hexagon, st.progress * 0.45)),
+        onUpdate: (st) => Object.assign(target.current, stageAt(st.progress * 0.7)),
       });
       const mm = gsap.matchMedia();
       mm.add("(prefers-reduced-motion: no-preference)", () => {

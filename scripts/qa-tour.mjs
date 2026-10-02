@@ -23,7 +23,7 @@ for (let i = 0; i <= +steps; i++) {
   await page.evaluate((y) => window.scrollTo(0, y), y);
   await page.waitForTimeout(1200);
   const file = path.join(outDir, `${pagePath.replace(/\//g, "_") || "home"}-${width}-${String(i).padStart(2, "0")}.png`);
-  await page.screenshot({ path: file });
+  await page.screenshot({ path: file, timeout: 120000 });
 }
 console.log(`scrollHeight-viewport=${total}px, ${+steps + 1} shots, page errors: ${errors.length ? errors.join(" | ") : "none"}`);
 await browser.close();

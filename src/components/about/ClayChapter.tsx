@@ -5,7 +5,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { Clay } from "@/components/three/Clay";
-import { hexagon, lerpParams, raw, type ClayParams } from "@/components/three/presets";
+import { raw, stageAt, type ClayParams } from "@/components/three/presets";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -21,7 +21,7 @@ export function ClayChapter({ story }: { story: string[] }) {
         trigger: section.current,
         start: "top 60%",
         end: "bottom 60%",
-        onUpdate: (st) => Object.assign(target.current, lerpParams(raw, hexagon, st.progress)),
+        onUpdate: (st) => Object.assign(target.current, stageAt(st.progress)),
       });
       const mm = gsap.matchMedia();
       mm.add("(prefers-reduced-motion: no-preference)", () => {

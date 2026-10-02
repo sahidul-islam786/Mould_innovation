@@ -23,7 +23,9 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
   const { slug } = await params;
   const p = getProject(slug);
   if (!p) notFound();
-  const next = projects[(projects.indexOf(p) + 1) % projects.length];
+  const idx = projects.indexOf(p);
+  const prev = projects[(idx + projects.length - 1) % projects.length];
+  const next = projects[(idx + 1) % projects.length];
 
   return (
     <>
@@ -60,11 +62,18 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
         </div>
       </section>
 
-      <nav aria-label="Next project" className="surface-ink border-t border-line-dark">
-        <Link href={`/projects/${next.slug}/`} className="wrap group block py-14">
-          <span className="text-sm text-muted-dark">Next project</span>
-          <span className="font-expanded mt-2 block text-h1 font-extrabold tracking-[-0.04em] group-hover:text-brand-red-light">{next.title}</span>
-        </Link>
+      <nav aria-label="More projects" className="surface-ink border-t border-line-dark">
+        <div className="wrap grid md:grid-cols-2">
+          {[
+            { o: prev, label: "Previous project" },
+            { o: next, label: "Next project" },
+          ].map(({ o, label }) => (
+            <Link key={label} href={`/projects/${o.slug}/`} className={`group py-12 ${label.startsWith("Next") ? "md:border-l md:border-line-dark md:pl-10 md:text-right" : ""}`}>
+              <span className="text-sm text-muted-dark">{label}</span>
+              <span className="font-expanded mt-2 block text-h2 font-extrabold tracking-[-0.04em] group-hover:text-brand-red-light">{o.title}</span>
+            </Link>
+          ))}
+        </div>
       </nav>
     </>
   );

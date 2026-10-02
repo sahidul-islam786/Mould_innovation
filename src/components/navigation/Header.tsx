@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { Logo } from "@/components/brand/Logo";
 import { Button } from "@/components/buttons/Button";
 import { MobileMenu } from "@/components/navigation/MobileMenu";
+import { Magnetic } from "@/components/motion/Magnetic";
 import { mainNav } from "@/data/navigation";
 import { company } from "@/data/company";
 
@@ -39,7 +40,7 @@ export function Header() {
       <header
         className={`fixed inset-x-0 top-0 z-50 transition-[transform,background-color,border-color] duration-[var(--dur-standard)] ease-[var(--ease-out)] ${
           hidden && !menuOpen ? "-translate-y-full" : "translate-y-0"
-        } ${solid ? "border-b border-line-dark bg-ink/85 backdrop-blur-md" : "border-b border-transparent bg-transparent"}`}
+        } ${solid ? "border-b border-white/10 bg-ink/55 backdrop-blur-xl backdrop-saturate-150" : "border-b border-transparent bg-transparent"}`}
       >
         <div className="mx-auto flex h-[var(--header-h)] max-w-[1600px] items-center justify-between gap-6 px-[var(--gutter)]">
           <Logo height={40} />
@@ -70,9 +71,11 @@ export function Header() {
           </nav>
 
           <div className="flex items-center gap-3">
-            <Button href={company.discoveryCall.href} className="max-md:hidden">
-              {company.discoveryCall.label}
-            </Button>
+            <span className="max-md:hidden">
+              <Magnetic>
+                <Button href={company.discoveryCall.href}>{company.discoveryCall.label}</Button>
+              </Magnetic>
+            </span>
             <button
               type="button"
               onClick={() => setMenuOpen(true)}

@@ -64,6 +64,7 @@ varying vec3 vNormalV;
 varying vec3 vViewPos;
 varying float vX;
 varying float vNoise;
+varying vec3 vPos;
 
 ${noise}
 
@@ -116,6 +117,7 @@ void main(){
 
   vNoise = n0;
   vX = p.x;
+  vPos = p;
   vec4 mv = modelViewMatrix * vec4(p, 1.0);
   vViewPos = mv.xyz;
   vNormalV = normalize(normalMatrix * nrm);
@@ -123,36 +125,66 @@ void main(){
 }
 `;
 
+// Black glass / chrome shell with red light living inside it (art direction: glossy black,
+// clear glass edges, internal red veins). Reflections come from a procedural studio environment.
 export const clayFragment = /* glsl */ `
 uniform vec3 uRed;
 uniform vec3 uMaroon;
 uniform vec3 uRim;
 uniform float uGlow;
+uniform float uTime;
+uniform float uHeat;
 
 varying vec3 vNormalV;
 varying vec3 vViewPos;
 varying float vX;
 varying float vNoise;
+varying vec3 vPos;
+
+${noise}
+
+// Studio environment: two softboxes overhead, a dim horizon strip, dark floor.
+vec3 env(vec3 r){
+  float top = smoothstep(0.35, 0.9, r.y);
+  float box1 = smoothstep(0.75, 0.95, 1.0 - abs(r.x + 0.35) * 1.6) * top;
+  float box2 = smoothstep(0.8, 0.98, 1.0 - abs(r.x - 0.55) * 2.4) * smoothstep(0.1, 0.6, r.y);
+  float horizon = exp(-pow(r.y * 6.0, 2.0)) * 0.18;
+  float floorShade = smoothstep(0.0, -0.8, r.y) * 0.02;
+  vec3 c = vec3(1.0) * (box1 * 1.3 + box2 * 0.7 + horizon) + floorShade;
+  // a faint red bounce from below, as if the red core lights the room
+  c += uRed * smoothstep(-0.2, -0.9, r.y) * 0.25 * uHeat;
+  return c;
+}
 
 void main(){
   vec3 N = normalize(vNormalV);
   if (!gl_FrontFacing) N = -N;
   vec3 V = normalize(-vViewPos);
-  vec3 L = normalize(vec3(-0.55, 0.75, 0.6));
+  float NdV = clamp(dot(N, V), 0.0, 1.0);
 
-  float diff = max(dot(N, L), 0.0);
-  float wrap = max((dot(N, L) + 0.45) / 1.45, 0.0);
+  // Fresnel (dielectric glass, F0 = 0.04).
+  float F = 0.04 + 0.96 * pow(1.0 - NdV, 5.0);
 
-  // Logo gradient: bright red on the left, maroon on the right.
-  float g = smoothstep(-0.9, 0.7, vX);
-  vec3 base = mix(uRed, uMaroon, g);
-  base *= 0.92 + 0.12 * vNoise;
+  // Internal red: thin glowing veins plus a deep core, seen through the glass.
+  vec3 q = vPos * 1.35 + vec3(0.0, uTime * 0.1, uTime * 0.04);
+  // Veins only inside a slowly moving region, so most of the shell stays black glass.
+  float mask = smoothstep(0.05, 0.55, snoise(vPos * 0.7 + vec3(uTime * 0.05, 0.0, 0.0)));
+  float vein = pow(1.0 - abs(snoise(q)), 22.0) * mask;
+  float vein2 = pow(1.0 - abs(snoise(q * 2.3 + 4.0)), 30.0) * mask;
+  float core = pow(NdV, 2.2);
+  float g = smoothstep(-0.9, 0.9, vX);
+  vec3 red = mix(uRed, uMaroon, g * 0.6);
+  vec3 inner = red * (vein * 2.2 + vein2 * 1.2 + core * 0.06 * mask) * uHeat * (1.0 - F * 0.7);
 
-  vec3 col = base * (0.06 + 1.05 * wrap * wrap);
-  vec3 H = normalize(L + V);
-  col += vec3(1.0, 0.86, 0.84) * pow(max(dot(N, H), 0.0), 48.0) * 0.35 * diff;
-  float fres = pow(1.0 - max(dot(N, V), 0.0), 2.6);
-  col += uRim * fres * (0.55 + uGlow);
+  // Glossy black body + chrome-like reflection.
+  vec3 R = reflect(-V, N);
+  vec3 refl = env(R);
+  vec3 body = vec3(0.012, 0.010, 0.012);
+  vec3 col = body + inner + refl * mix(0.10, 1.0, F) * 1.15;
+
+  // Clear glass rim and a touch of red rim light.
+  col += vec3(0.85, 0.85, 0.9) * pow(1.0 - NdV, 3.0) * 0.18;
+  col += uRim * pow(1.0 - NdV, 2.5) * (0.12 + uGlow * 0.5);
 
   gl_FragColor = vec4(col, 1.0);
   #include <tonemapping_fragment>

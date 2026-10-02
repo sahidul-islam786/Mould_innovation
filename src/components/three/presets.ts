@@ -9,7 +9,10 @@ export type ClayParams = {
   glow: number; // rim intensity
 };
 
-export const raw: ClayParams = { morph: 0, amp: 0.22, freq: 1.35, speed: 0.22, twist: 0, stretch: 1, glow: 0.2 };
+export const raw: ClayParams = { morph: 0, amp: 0.15, freq: 1.05, speed: 0.2, twist: 0, stretch: 1, glow: 0.2 };
+// Intermediate stages of "from clay to form".
+export const liquid: ClayParams = { morph: 0.05, amp: 0.06, freq: 0.8, speed: 0.35, twist: 0.2, stretch: 1.05, glow: 0.35 };
+export const structure: ClayParams = { morph: 0.6, amp: 0.05, freq: 2.6, speed: 0.2, twist: 0.35, stretch: 1, glow: 0.4 };
 export const hexagon: ClayParams = { morph: 1, amp: 0.02, freq: 1.2, speed: 0.12, twist: 0, stretch: 1, glow: 0.45 };
 
 // Keys match service slugs.
@@ -37,3 +40,11 @@ export const lerpParams = (a: ClayParams, b: ClayParams, t: number): ClayParams 
   stretch: a.stretch + (b.stretch - a.stretch) * t,
   glow: a.glow + (b.glow - a.glow) * t,
 });
+
+// Progress 0..1 across raw -> liquid -> structure -> hexagon.
+export const stageAt = (p: number): ClayParams => {
+  const stops = [raw, liquid, structure, hexagon];
+  const x = Math.min(Math.max(p, 0), 1) * (stops.length - 1);
+  const i = Math.min(Math.floor(x), stops.length - 2);
+  return lerpParams(stops[i], stops[i + 1], x - i);
+};

@@ -13,6 +13,7 @@ export function Cursor() {
     const el = ring.current;
     if (!el || !matchMedia("(pointer: fine) and (prefers-reduced-motion: no-preference)").matches) return;
     el.style.display = "grid";
+    gsap.set(el, { scale: 0 });
     const x = gsap.quickTo(el, "x", { duration: 0.35, ease: "power3" });
     const y = gsap.quickTo(el, "y", { duration: 0.35, ease: "power3" });
     const move = (e: PointerEvent) => {

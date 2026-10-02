@@ -96,6 +96,7 @@ export function MobileMenu({ open, onClose }: Props) {
               <li key={item.href} className="overflow-hidden border-b border-line-dark">
                 <Link
                   data-menu-item
+                  onClick={onClose}
                   href={item.href}
                   aria-current={active ? "page" : undefined}
                   className="font-semi-expanded flex min-h-16 items-center justify-between py-3 text-[clamp(2rem,9vw,3.5rem)] font-bold leading-none tracking-[-0.03em]"

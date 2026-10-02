@@ -32,6 +32,7 @@ export function ClayObject({ target, detail = 96, scale = 1, still = false }: Pr
       uTwist: { value: target.current.twist },
       uStretch: { value: target.current.stretch },
       uGlow: { value: target.current.glow },
+      uHeat: { value: 0 },
       uPress: { value: 0 },
       uPointer: { value: new THREE.Vector3(0, 0, 2) },
       uRed: { value: new THREE.Color("#ed1c24") },
@@ -62,6 +63,7 @@ export function ClayObject({ target, detail = 96, scale = 1, still = false }: Pr
     const m = mesh.current;
     if (!m) return;
     if (still) {
+      u.uHeat.value = 1;
       m.rotation.set(-0.15, 0.5, 0);
       return;
     }
@@ -72,6 +74,8 @@ export function ClayObject({ target, detail = 96, scale = 1, still = false }: Pr
     u.uPointer.value.lerp(pointerLocal, 1 - Math.exp(-6 * dt));
     const active = Math.abs(state.pointer.x) < 0.98 && Math.abs(state.pointer.y) < 0.98 ? 1 : 0;
     u.uPress.value = damp(u.uPress.value, active, 2.5, dt);
+    // Internal red light: wakes up after load, brightens when the pointer is over the object.
+    u.uHeat.value = damp(u.uHeat.value, 1 + u.uPress.value * 0.35 + Math.abs(state.pointer.x) * 0.15, 1.2, dt);
 
     // Slow idle turn plus a lean toward the pointer.
     m.rotation.y = damp(m.rotation.y, state.clock.elapsedTime * 0.12 + state.pointer.x * 0.35, 2, dt);
