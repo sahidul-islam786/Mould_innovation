@@ -7,7 +7,7 @@ import { mkdir } from "node:fs/promises";
 import path from "node:path";
 
 const BASE = process.env.BASE ?? "http://localhost:4173";
-const WIDTHS = [1440, 1280, 1024, 768, 390, 375];
+const WIDTHS = (process.env.WIDTHS ?? "1920,1440,1280,1024,768,430,390,375").split(",").map(Number);
 const [outDir = "qa-shots", ...paths] = process.argv.slice(2);
 const pages = paths.length ? paths : ["/"];
 

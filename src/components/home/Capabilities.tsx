@@ -19,7 +19,7 @@ const serviceFor: Record<string, string> = {
 export function Capabilities() {
   return (
     <section aria-labelledby="cap-title" className="surface-ink relative overflow-hidden py-[clamp(6rem,11vw,10rem)]">
-      <CinematicScene src="/media/scenes/scene-4.webp" position="50% 40%" shade="center" travel="in" />
+      <CinematicScene src="/media/scenes/scene-3.webp" position="50% 50%" shade="center" travel="vertical" />
       <div className="wrap relative">
         <p className="eyebrow text-muted-dark">
           <span className="mr-3 text-brand-red-light">03</span>Expertise

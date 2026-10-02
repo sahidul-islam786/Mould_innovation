@@ -12,12 +12,12 @@ export const dynamicParams = false;
 
 // Each service opens in the world that matches it.
 const sceneFor: Record<string, { src: string; position: string }> = {
-  "ai-automation-agents": { src: "/media/scenes/scene-5.webp", position: "42% 40%" },
-  "ai-chatbots-voicebots": { src: "/media/scenes/scene-2.webp", position: "56% 50%" },
-  "custom-ai-apps": { src: "/media/scenes/scene-4.webp", position: "55% 45%" },
-  "data-predictive-analytics": { src: "/media/scenes/scene-6.webp", position: "55% 70%" },
-  "computer-vision-visual-search": { src: "/media/scenes/scene-1.webp", position: "72% 32%" },
-  "ai-consulting-llmops-governance": { src: "/media/scenes/scene-7.webp", position: "55% 55%" },
+  "ai-automation-agents": { src: "/media/scenes/scene-2.webp", position: "60% 40%" },
+  "ai-chatbots-voicebots": { src: "/media/scenes/scene-4.webp", position: "55% 55%" },
+  "custom-ai-apps": { src: "/media/scenes/scene-5.webp", position: "55% 40%" },
+  "data-predictive-analytics": { src: "/media/scenes/scene-3.webp", position: "50% 50%" },
+  "computer-vision-visual-search": { src: "/media/scenes/scene-1.webp", position: "40% 30%" },
+  "ai-consulting-llmops-governance": { src: "/media/scenes/scene-7.webp", position: "50% 45%" },
 };
 
 export function generateStaticParams() {

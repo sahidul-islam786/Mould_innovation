@@ -34,7 +34,7 @@ export function SaasSteps({ actions, why }: { actions: string[]; why: string }) 
   return (
     <section ref={section} aria-labelledby="why-title" className="surface-ink relative">
       <div className="sticky top-0 h-[100svh] overflow-hidden">
-        <CinematicScene src="/media/scenes/scene-4.webp" position="60% 45%" shade="left" travel="right" />
+        <CinematicScene src="/media/scenes/scene-4.webp" position="62% 50%" shade="left" travel="orbit" />
       </div>
       <div className="wrap relative -mt-[100svh] grid gap-10 py-[clamp(6rem,10vw,8rem)] lg:grid-cols-12">
         <div className="lg:col-span-6">

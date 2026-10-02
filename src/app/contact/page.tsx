@@ -15,7 +15,7 @@ export default function ContactPage() {
   const l = contact.labels;
   return (
     <>
-      <PageHero kicker={contact.kicker} title={contact.title} lead={contact.intro} scene={{ src: "/media/scenes/scene-7.webp", position: "60% 50%" }}>
+      <PageHero kicker={contact.kicker} title={contact.title} lead={contact.intro} scene={{ src: "/media/scenes/scene-7.webp", position: "55% 45%" }}>
         <div className="mt-10">
           <Button href={company.discoveryCall.href}>{company.discoveryCall.label}</Button>
         </div>

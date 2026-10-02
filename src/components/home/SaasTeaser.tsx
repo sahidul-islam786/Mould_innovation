@@ -7,7 +7,7 @@ import { CinematicScene } from "@/components/motion/CinematicScene";
 export function SaasTeaser() {
   return (
     <section aria-labelledby="saas-title" className="surface-ink relative flex min-h-[100svh] flex-col overflow-hidden pb-[clamp(3rem,6vw,5rem)] pt-[clamp(6rem,10vw,9rem)]">
-      <CinematicScene src="/media/scenes/scene-6.webp" position="50% 75%" shade="top" travel="up" />
+      <CinematicScene src="/media/scenes/scene-4.webp" position="50% 60%" shade="top" travel="orbit" />
       <div className="wrap relative flex flex-1 flex-col justify-between gap-14">
         <div className="max-w-[36rem]">
           <p className="eyebrow text-muted-dark"><span className="mr-3 text-brand-red-light">05</span>{saas.title}</p>

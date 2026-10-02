@@ -21,7 +21,9 @@ export default function Template({ children }: { children: React.ReactNode }) {
   });
   return (
     <>
-      <div ref={wipe} aria-hidden className="pointer-events-none fixed inset-0 z-[65] grid origin-top scale-y-0 place-items-center border-b-2 border-brand-red bg-ink"></div>
+      <div ref={wipe} aria-hidden className="pointer-events-none fixed inset-0 z-[65] grid origin-top scale-y-0 place-items-center border-b border-brand-red bg-ink shadow-[0_1px_24px_rgb(237_28_36/0.5)]">
+        <div className="dust-near absolute inset-0 opacity-60" />
+      </div>
       {children}
     </>
   );

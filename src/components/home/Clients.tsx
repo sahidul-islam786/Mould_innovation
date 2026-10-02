@@ -27,7 +27,7 @@ function Row({ dup = false }: { dup?: boolean }) {
 export function Clients() {
   return (
     <section aria-labelledby="clients-title" className="surface-ink relative flex min-h-[90svh] flex-col justify-end overflow-hidden pb-[clamp(4rem,7vw,6rem)] pt-[40svh]">
-      <CinematicScene src="/media/scenes/scene-5.webp" position="42% 38%" mobilePosition="35% 40%" shade="bottom" travel="right" />
+      <CinematicScene src="/media/scenes/scene-5.webp" position="50% 35%" mobilePosition="45% 40%" shade="bottom" travel="pan" />
       <div className="wrap relative">
         <p className="eyebrow text-muted-dark">
           <span className="mr-3 text-brand-red-light">—</span>Trusted by

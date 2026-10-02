@@ -48,7 +48,7 @@ export function ServicesShowcase() {
   return (
     <section ref={section} aria-labelledby="services-title" className="surface-ink">
       <div data-pin className="relative overflow-hidden lg:h-[100svh]">
-        <CinematicScene src="/media/scenes/scene-3.webp" position="64% 50%" mobilePosition="70% 50%" shade="left" travel="left" />
+        <CinematicScene src="/media/scenes/scene-6.webp" position="60% 50%" mobilePosition="65% 50%" shade="left" travel="diagonal" />
 
         <div className="wrap relative flex h-full flex-col justify-center py-[clamp(4rem,7vw,6rem)] lg:py-[calc(var(--header-h)+1rem)]">
           <div className="flex items-end justify-between gap-6">

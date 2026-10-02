@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function ProjectsPage() {
   return (
     <>
-      <PageHero title="Projects" />
+      <PageHero title="Projects" scene={{ src: "/media/scenes/scene-5.webp", position: "55% 40%" }} />
       <ProjectsIndex />
     </>
   );

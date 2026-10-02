@@ -16,7 +16,7 @@ export function CtaBand() {
 
   return (
     <section aria-labelledby="cta-title" className="surface-ink relative overflow-hidden">
-      <CinematicScene src="/media/scenes/scene-7.webp" position="50% 55%" shade="bottom" travel="in" />
+      <CinematicScene src="/media/scenes/scene-7.webp" position="50% 45%" shade="bottom" travel="pullback" />
       <div className="wrap relative flex min-h-[92svh] flex-col items-center justify-end pb-[clamp(4rem,8vw,7rem)] pt-24 text-center">
         <div className="relative z-10 flex flex-col items-center">
           <p className="eyebrow text-brand-red-light">{home.ctaKicker}</p>
