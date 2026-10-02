@@ -6,13 +6,12 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 import { useGSAP } from "@gsap/react";
-import { System } from "@/components/three/System";
-import { stageAt, type ClayParams } from "@/components/three/presets";
 import { Button } from "@/components/buttons/Button";
 import { Magnetic } from "@/components/motion/Magnetic";
 import { company } from "@/data/company";
 import { home } from "@/data/pages";
 import { services } from "@/data/services";
+import { CinematicScene } from "@/components/motion/CinematicScene";
 
 gsap.registerPlugin(ScrollTrigger, SplitText, useGSAP);
 
@@ -20,8 +19,6 @@ gsap.registerPlugin(ScrollTrigger, SplitText, useGSAP);
 // separating, core moulding from liquid glass into the hexagon) while the type drifts out of focus.
 export function HomeHero() {
   const section = useRef<HTMLElement>(null);
-  const target = useRef<ClayParams>(stageAt(0.8));
-  const progress = useRef(0);
 
   useGSAP(
     () => {
@@ -32,7 +29,7 @@ export function HomeHero() {
         gsap.set("[data-hero-title]", { visibility: "visible" });
         gsap
           .timeline({ defaults: { ease: "expo.out" } })
-          .from("[data-hero-scene]", { opacity: 0, scale: 0.94, duration: 1.6 })
+          .from("[data-hero-scene]", { opacity: 0, scale: 1.08, duration: 2 })
           .from(split.lines, { yPercent: 110, duration: 1, stagger: 0.09 }, 0.35)
           .from("[data-hero-copy]", { y: 18, opacity: 0, duration: 0.9, stagger: 0.08 }, 0.75)
           .from("[data-hero-index] li", { x: 16, opacity: 0, duration: 0.7, stagger: 0.05 }, 0.9)
@@ -48,26 +45,11 @@ export function HomeHero() {
               end: "+=90%",
               pin: true,
               scrub: 0.8,
-              onUpdate: (st) => {
-                progress.current = st.progress;
-                Object.assign(target.current, stageAt(0.8 + st.progress * 0.2));
-              },
             },
           })
           .to("[data-hero-type]", { yPercent: -18, opacity: 0.15, filter: "blur(6px)", ease: "none" }, 0)
           .to("[data-hero-index]", { x: 40, opacity: 0, ease: "none" }, 0)
-          .to("[data-hero-scene]", { xPercent: -14, ease: "none" }, 0);
-      });
-      mm.add("(max-width: 1023px)", () => {
-        ScrollTrigger.create({
-          trigger: section.current,
-          start: "top top",
-          end: "bottom top",
-          onUpdate: (st) => {
-            progress.current = st.progress * 0.6;
-            Object.assign(target.current, stageAt(0.8 + st.progress * 0.2));
-          },
-        });
+          .to("[data-hero-scene]", { scale: 1.12, yPercent: 4, ease: "none" }, 0);
       });
       return () => mm.revert();
     },
@@ -75,12 +57,10 @@ export function HomeHero() {
   );
 
   return (
-    <section ref={section} className="surface-ink tech-grid relative flex min-h-[100svh] flex-col overflow-hidden">
-      <div data-hero-scene className="absolute inset-0 max-lg:top-[-8%] max-lg:opacity-70 lg:bottom-[8%] lg:left-[26%] lg:right-[18%]">
-        <System target={target} progress={progress} variant="hero" className="h-full w-full" />
+    <section ref={section} className="surface-ink relative flex min-h-[100svh] flex-col overflow-hidden">
+      <div data-hero-scene className="absolute inset-0">
+        <CinematicScene src="/media/scenes/scene-1.webp" position="68% 35%" mobilePosition="62% 30%" shade="left" />
       </div>
-      {/* Edge vignette keeps the type readable over the scene. */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,var(--ink)_8%,transparent_55%),linear-gradient(0deg,var(--ink),transparent_30%)]" />
 
       <div className="wrap relative grid flex-1 grid-cols-12 items-end gap-6 pb-[clamp(2.5rem,6vh,4.5rem)] pt-[calc(var(--header-h)+3rem)]">
         <div data-hero-type className="col-span-12 lg:col-span-7">
@@ -107,7 +87,7 @@ export function HomeHero() {
 
         {/* Technical index of the six real services. */}
         <nav aria-label="Services index" data-hero-index className="col-span-12 self-end max-lg:hidden lg:col-span-3 lg:col-start-10">
-          <ol className="border-l border-line-dark">
+          <ol className="border-l border-line-dark bg-ink/55 py-2 backdrop-blur-[3px]">
             {services.map((s, i) => (
               <li key={s.slug}>
                 <Link href={`/services/${s.slug}/`} className="group flex items-baseline gap-4 py-2.5 pl-5 transition-colors hover:text-paper">

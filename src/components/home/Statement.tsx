@@ -7,6 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 import { useGSAP } from "@gsap/react";
 import { home } from "@/data/pages";
+import { CinematicScene } from "@/components/motion/CinematicScene";
 
 gsap.registerPlugin(ScrollTrigger, SplitText, useGSAP);
 
@@ -30,8 +31,9 @@ export function Statement() {
   );
 
   return (
-    <section ref={section} aria-labelledby="statement-title" className="surface-charcoal tech-grid relative py-[clamp(5rem,10vw,9rem)]">
-      <div className="wrap">
+    <section ref={section} aria-labelledby="statement-title" className="surface-ink relative flex min-h-[120svh] flex-col justify-end overflow-hidden pb-[clamp(4rem,8vw,7rem)] pt-[55svh]">
+      <CinematicScene src="/media/scenes/scene-2.webp" position="55% 50%" mobilePosition="62% 50%" shade="bottom" />
+      <div className="wrap relative">
         <div className="grid grid-cols-12 gap-6">
           <p className="eyebrow col-span-12 text-muted-dark lg:col-span-3">
             <span className="mr-3 text-brand-red-light">01</span>About Mould Innovation

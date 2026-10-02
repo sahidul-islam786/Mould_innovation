@@ -2,11 +2,13 @@ import { RevealText } from "@/components/motion/RevealText";
 import { Reveal } from "@/components/motion/Reveal";
 import { Button } from "@/components/buttons/Button";
 import { saas } from "@/data/pages";
+import { CinematicScene } from "@/components/motion/CinematicScene";
 
 export function SaasTeaser() {
   return (
-    <section aria-labelledby="saas-title" className="surface-charcoal tech-grid py-[clamp(4.5rem,8vw,7rem)]">
-      <div className="wrap grid gap-14 lg:grid-cols-12">
+    <section aria-labelledby="saas-title" className="surface-ink relative overflow-hidden py-[clamp(7rem,13vw,12rem)]">
+      <CinematicScene src="/media/scenes/scene-6.webp" position="50% 70%" shade="left" />
+      <div className="wrap relative grid gap-14 lg:grid-cols-12">
         <div className="lg:col-span-6">
           <p className="eyebrow text-muted-dark"><span className="mr-3 text-brand-red-light">05</span>{saas.title}</p>
           <RevealText as="h2" id="saas-title" className="font-expanded mt-4 text-h1">
