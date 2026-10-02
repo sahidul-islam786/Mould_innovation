@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { Logo } from "@/components/brand/Logo";
 import { Button } from "@/components/buttons/Button";
 import { MobileMenu } from "@/components/navigation/MobileMenu";
+import { Magnetic } from "@/components/motion/Magnetic";
 import { mainNav } from "@/data/navigation";
 import { company } from "@/data/company";
 
@@ -23,15 +24,24 @@ export function Header() {
   // Transparent over the hero, solid after scrolling; slides away on scroll down, back on scroll up.
   useEffect(() => {
     let last = window.scrollY;
-    const onScroll = () => {
+    let frame = 0;
+    const update = () => {
+      frame = 0;
       const y = window.scrollY;
       setSolid(y > SOLID_AFTER);
       setHidden(y > last && y > 240);
       last = y;
     };
-    onScroll();
+    // One state check per animation frame; React skips the render when values are unchanged.
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    update();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(frame);
+    };
   }, []);
 
   return (
@@ -39,10 +49,10 @@ export function Header() {
       <header
         className={`fixed inset-x-0 top-0 z-50 transition-[transform,background-color,border-color] duration-[var(--dur-standard)] ease-[var(--ease-out)] ${
           hidden && !menuOpen ? "-translate-y-full" : "translate-y-0"
-        } ${solid ? "border-b border-line-dark bg-ink/85 backdrop-blur-md" : "border-b border-transparent bg-transparent"}`}
+        } ${solid ? "border-b border-white/10 bg-ink/55 backdrop-blur-xl backdrop-saturate-150" : "border-b border-transparent bg-transparent"}`}
       >
         <div className="mx-auto flex h-[var(--header-h)] max-w-[1600px] items-center justify-between gap-6 px-[var(--gutter)]">
-          <Logo height={40} />
+          <Logo height={34} />
 
           <nav aria-label="Main" className="max-lg:hidden">
             <ul className="flex items-center gap-1">
@@ -53,7 +63,7 @@ export function Header() {
                     <Link
                       href={item.href}
                       aria-current={active ? "page" : undefined}
-                      className="group relative inline-flex min-h-11 items-center px-3 text-[0.95rem] text-paper/80 transition-colors duration-[var(--dur-fast)] hover:text-paper aria-[current=page]:text-paper"
+                      className="group relative inline-flex min-h-11 items-center px-3 text-[0.875rem] text-paper/75 transition-colors duration-[var(--dur-fast)] hover:text-paper aria-[current=page]:text-paper"
                     >
                       {item.label}
                       <span
@@ -70,9 +80,11 @@ export function Header() {
           </nav>
 
           <div className="flex items-center gap-3">
-            <Button href={company.discoveryCall.href} className="max-md:hidden">
-              {company.discoveryCall.label}
-            </Button>
+            <span className="max-md:hidden">
+              <Magnetic>
+                <Button href={company.discoveryCall.href}>{company.discoveryCall.label}</Button>
+              </Magnetic>
+            </span>
             <button
               type="button"
               onClick={() => setMenuOpen(true)}

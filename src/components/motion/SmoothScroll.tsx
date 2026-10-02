@@ -8,6 +8,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useReducedMotion } from "@/lib/useReducedMotion";
 
 gsap.registerPlugin(ScrollTrigger);
+// Mobile browsers resize the viewport when the address bar shows/hides; don't re-layout pins for it.
+ScrollTrigger.config({ ignoreMobileResize: true });
 
 let lenis: Lenis | null = null;
 
@@ -19,7 +21,8 @@ export function SmoothScroll() {
 
   useEffect(() => {
     if (reduced) return;
-    const instance = new Lenis({ lerp: 0.1, anchors: true });
+    // Wheel input is eased (lerp 0.085); touch keeps the browser's own native scrolling.
+    const instance = new Lenis({ lerp: 0.085, anchors: true, syncTouch: false });
     lenis = instance;
     instance.on("scroll", ScrollTrigger.update);
     const tick = (time: number) => instance.raf(time * 1000);

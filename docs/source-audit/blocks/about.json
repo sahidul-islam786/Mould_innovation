@@ -1,0 +1,53 @@
+{
+ "url": "https://www.mouldinnovation.com/about",
+ "blocks": [
+  [
+   "li",
+   "Home"
+  ],
+  [
+   "li",
+   "About"
+  ],
+  [
+   "li",
+   "Projects"
+  ],
+  [
+   "li",
+   "Services"
+  ],
+  [
+   "li",
+   "SAAS"
+  ],
+  [
+   "li",
+   "Careers"
+  ],
+  [
+   "li",
+   "Contact Us"
+  ],
+  [
+   "h1",
+   "About Us"
+  ],
+  [
+   "h5",
+   "Moulding your future with the clay of creativity and technology."
+  ],
+  [
+   "p",
+   "The moulding of clay is one of the oldest instruments of human creativity and commerce. Several millennia ago, cavemen moulded clay into innovative objects of everyday use, kickstarting a wave of artistic expression and entrepreneurial endeavours."
+  ],
+  [
+   "p",
+   "Our work is an ode to this spirit of human enterprise."
+  ],
+  [
+   "p",
+   "We use our skills in technology, strategy and design, to mould ideas into innovative products and services for our customers."
+  ]
+ ]
+}

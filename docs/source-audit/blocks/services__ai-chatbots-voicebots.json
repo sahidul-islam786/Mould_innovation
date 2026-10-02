@@ -1,0 +1,61 @@
+{
+ "url": "https://www.mouldinnovation.com/services/ai-chatbots-voicebots",
+ "blocks": [
+  [
+   "li",
+   "Home"
+  ],
+  [
+   "li",
+   "About"
+  ],
+  [
+   "li",
+   "Projects"
+  ],
+  [
+   "li",
+   "Services"
+  ],
+  [
+   "li",
+   "SAAS"
+  ],
+  [
+   "li",
+   "Careers"
+  ],
+  [
+   "li",
+   "Contact Us"
+  ],
+  [
+   "h1",
+   "AI Chatbots & Voicebots"
+  ],
+  [
+   "h4",
+   "AI chatbot development, WhatsApp chatbot, WhatsApp Business API, website chat widget, voice AI, IVR automation, contact center AI, call summarization, RAG chatbot, knowledge base bot, human handover, multilingual support, lead qualification bot, CSAT analytics, Dialogflow/Twilio"
+  ],
+  [
+   "h2",
+   "Helpful bots that handle questions, bookings, and follow-ups 24×7 with smooth human handover."
+  ],
+  [
+   "p",
+   "LLM-powered chat and voice assistants that actually resolve queries. Website, WhatsApp, mobile app, and phone/IVR with human handover and analytics."
+  ],
+  [
+   "p",
+   "Where it helps\n\n• Ecommerce support and returns\n\n• Hospitality concierge and bookings\n\n• Education/admissions Q&A\n\n• Lead qualification and meeting scheduling"
+  ],
+  [
+   "p",
+   "What you get\n\n• Conversation design + intents\n\n• RAG from your KB/CRM/files\n\n• Channel setup (web widget, WhatsApp, telephony)\n\n• Guardrails, tone, escalation rules\n\n• Dashboard for deflection, CSAT, and AHT"
+  ],
+  [
+   "p",
+   "Outcomes\n\n• 24×7 self-serve, lower ticket volume, faster response, more qualified leads."
+  ]
+ ]
+}

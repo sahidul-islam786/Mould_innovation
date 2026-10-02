@@ -23,10 +23,16 @@ export function Footer() {
   return (
     <footer className="surface-ink border-t border-line-dark">
       <div className="mx-auto max-w-[1600px] px-[var(--gutter)] pb-10 pt-20">
+        <a
+          href={`mailto:${company.email}`}
+          className="font-expanded group mb-20 block break-all text-[clamp(1.5rem,4.6vw,4.5rem)] font-semibold leading-none tracking-[-0.045em] text-paper transition-colors duration-[var(--dur-standard)] hover:text-brand-red-light"
+        >
+          {company.email}
+          <span aria-hidden className="mt-6 block h-px w-full origin-left scale-x-[0.12] bg-brand-red transition-transform duration-700 ease-[var(--ease-out)] group-hover:scale-x-100" />
+        </a>
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1.2fr_1fr_1.2fr]">
           <div className="flex flex-col items-start gap-6">
             <Logo height={56} />
-            <p className="font-semi-expanded max-w-[18ch] text-h3 font-bold">Your goals, our expertise.</p>
           </div>
 
           <Column title="Company">

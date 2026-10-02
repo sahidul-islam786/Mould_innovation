@@ -1,0 +1,35 @@
+{
+  "85-lansdowne": {
+    "title": "85 Lansdowne",
+    "services": [
+      "Digital Marketing",
+      "Web Development"
+    ],
+    "summary": "We have worked with 85 Lansdowne to build their digital channels from ground up with an overall objective to increase in-store visits as well has global awareness of its new eCommerce portal.",
+    "about": [
+      "85 Lansdowne is the most prestigious multi-brand designer store in India. They have been early adopters in the digital space."
+    ]
+  },
+  "atkmb": {
+    "title": "ATKMB",
+    "services": [
+      "Digital Marketing",
+      "Video & Animation",
+      "Web Development"
+    ],
+    "summary": "We’ve had the honour of being the official digital agency for ATKMB since its inception. Some of our most creative and exciting work in the digital space has been done here.",
+    "about": [
+      "India’s most prominent football team, ATKMB is a three time winner of the ISL (Indian Super League) and has the largest fan-base of supporters more than another Indian football team around the world."
+    ]
+  },
+  "cucumber-kidswear": {
+    "title": "Cucumber Kidswear",
+    "services": [
+      "Digital Marketing"
+    ],
+    "summary": "It has been exciting to work with Cucumber on digital strategy as well as running conversion campaigns with paid digital advertising. We’ve had the distinct pleasure of seeing sales go up as a result of our Digital Media buying prowess in T2/T3 Indian cities.",
+    "about": [
+      "India’s top kidswear brand, Cucumber has a national presence and a very active eCommerce portal."
+    ]
+  }
+}

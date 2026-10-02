@@ -1,0 +1,85 @@
+{
+ "url": "https://www.mouldinnovation.com/services",
+ "blocks": [
+  [
+   "li",
+   "Home"
+  ],
+  [
+   "li",
+   "About"
+  ],
+  [
+   "li",
+   "Projects"
+  ],
+  [
+   "li",
+   "Services"
+  ],
+  [
+   "li",
+   "SAAS"
+  ],
+  [
+   "li",
+   "Careers"
+  ],
+  [
+   "li",
+   "Contact Us"
+  ],
+  [
+   "h1",
+   "Services"
+  ],
+  [
+   "h2",
+   "AI Automation & Agents"
+  ],
+  [
+   "p",
+   "Your new digital teammate."
+  ],
+  [
+   "h2",
+   "AI Chatbots & Voicebots"
+  ],
+  [
+   "p",
+   "Answers, instantly—by chat or by voice."
+  ],
+  [
+   "h2",
+   "Custom AI Apps & Integrations"
+  ],
+  [
+   "p",
+   "AI features your users will love."
+  ],
+  [
+   "h2",
+   "Data & Predictive Analytics"
+  ],
+  [
+   "p",
+   "See what’s happening. Know what’s next."
+  ],
+  [
+   "h2",
+   "Computer Vision & Visual Search"
+  ],
+  [
+   "p",
+   "Teach cameras to understand."
+  ],
+  [
+   "h2",
+   "AI Strategy & Safe Scale"
+  ],
+  [
+   "p",
+   "Start right. Scale safely."
+  ]
+ ]
+}
