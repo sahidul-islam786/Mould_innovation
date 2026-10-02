@@ -1,24 +1,24 @@
 "use client";
 
 import Link from "next/link";
-import { useRef, useState } from "react";
-import { Clay } from "@/components/three/Clay";
-import { servicePresets, type ClayParams } from "@/components/three/presets";
+import { useState } from "react";
+import { CinematicScene } from "@/components/motion/CinematicScene";
 import { Reveal } from "@/components/motion/Reveal";
 import { services } from "@/data/services";
 
-// All six services as a ruled index. On desktop a sticky clay takes each service's form on hover/focus.
+// All six services as a ruled index inside the sticky DNA world.
 export function ServicesIndex() {
   const [active, setActive] = useState(0);
-  const target = useRef<ClayParams>({ ...servicePresets[services[0].slug] });
   const select = (i: number) => {
     setActive(i);
-    Object.assign(target.current, servicePresets[services[i].slug]);
   };
 
   return (
-    <section className="surface-ink pb-[clamp(5rem,10vw,8rem)]">
-      <div className="wrap grid gap-12 lg:grid-cols-12">
+    <section className="surface-ink relative pb-[clamp(5rem,10vw,8rem)]">
+      <div className="sticky top-0 h-[100svh] overflow-hidden">
+        <CinematicScene src="/media/scenes/scene-3.webp" position="70% 50%" shade="left" travel="left" />
+      </div>
+      <div className="wrap relative -mt-[100svh] grid gap-12 pt-[10svh] lg:grid-cols-12">
         <Reveal variant="stagger" className="border-t border-line-dark lg:col-span-7">
           {services.map((s, i) => (
             <Link
@@ -37,11 +37,6 @@ export function ServicesIndex() {
             </Link>
           ))}
         </Reveal>
-        <div className="max-lg:hidden lg:col-span-5">
-          <div className="sticky top-[calc(var(--header-h)+2rem)] h-[70svh]">
-            <Clay target={target} className="h-full w-full" cameraZ={4.6} />
-          </div>
-        </div>
       </div>
     </section>
   );

@@ -32,14 +32,14 @@ export function Statement() {
 
   return (
     <section ref={section} aria-labelledby="statement-title" className="surface-ink relative flex min-h-[120svh] flex-col justify-end overflow-hidden pb-[clamp(4rem,8vw,7rem)] pt-[55svh]">
-      <CinematicScene src="/media/scenes/scene-2.webp" position="55% 50%" mobilePosition="62% 50%" shade="bottom" />
+      <CinematicScene src="/media/scenes/scene-2.webp" position="56% 50%" mobilePosition="60% 50%" shade="bottom" travel="up" />
       <div className="wrap relative">
         <div className="grid grid-cols-12 gap-6">
           <p className="eyebrow col-span-12 text-muted-dark lg:col-span-3">
             <span className="mr-3 text-brand-red-light">01</span>About Mould Innovation
           </p>
           <div className="col-span-12 lg:col-span-9">
-            <h2 id="statement-title" data-words className="font-semi-expanded text-[clamp(1.5rem,2.9vw,2.75rem)] leading-[1.22] tracking-[-0.025em]">
+            <h2 id="statement-title" data-words className="font-semi-expanded max-w-[34ch] text-[clamp(1.25rem,2.1vw,2rem)] leading-[1.3] tracking-[-0.02em]">
               {home.introLead} {home.introAudience} <span className="text-brand-red-light">{home.introOutcomes[0]}</span> <span className="text-brand-red-light">{home.introOutcomes[1]}</span> {home.introOutcomes[2]}
             </h2>
             <div className="mt-14 grid gap-px sm:grid-cols-3">

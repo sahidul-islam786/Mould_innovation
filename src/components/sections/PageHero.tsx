@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
 import { RevealText } from "@/components/motion/RevealText";
+import { CinematicScene } from "@/components/motion/CinematicScene";
 
 export type Crumb = { label: string; href?: string };
 
@@ -11,6 +12,7 @@ export function PageHero({
   lead,
   crumbs,
   visual,
+  scene,
   children,
 }: {
   title: string;
@@ -18,11 +20,13 @@ export function PageHero({
   lead?: string;
   crumbs?: Crumb[];
   visual?: ReactNode;
+  scene?: { src: string; position?: string; mobilePosition?: string };
   children?: ReactNode;
 }) {
   return (
-    <section className="surface-ink tech-grid relative overflow-hidden">
-      <div className="wrap relative grid min-h-[62svh] items-end gap-10 pb-[clamp(3rem,7vw,6rem)] pt-[calc(var(--header-h)+3rem)] lg:grid-cols-12">
+    <section className={`surface-ink relative overflow-hidden ${scene ? "" : "tech-grid"}`}>
+      {scene && <CinematicScene src={scene.src} position={scene.position} mobilePosition={scene.mobilePosition} shade="left" travel="in" />}
+      <div className={`wrap relative grid ${scene ? "min-h-[78svh]" : "min-h-[62svh]"} items-end gap-10 pb-[clamp(3rem,7vw,6rem)] pt-[calc(var(--header-h)+3rem)] lg:grid-cols-12`}>
         <div className="relative z-10 lg:col-span-7">
           {crumbs && (
             <nav aria-label="Breadcrumb" className="mb-10 text-sm text-muted-dark">
@@ -48,7 +52,7 @@ export function PageHero({
           <RevealText as="h1" trigger="load" className="font-expanded text-h1 font-extrabold tracking-[-0.04em]">
             {title}
           </RevealText>
-          {lead && <p className="mt-8 max-w-[48ch] text-[clamp(1.125rem,1.4vw,1.375rem)] leading-[1.45] text-paper/80">{lead}</p>}
+          {lead && <p className="mt-6 max-w-[48ch] text-[1.0625rem] leading-relaxed text-paper/75">{lead}</p>}
           {children}
         </div>
         {visual && <div className="relative h-[40svh] lg:col-span-5 lg:h-[60svh]">{visual}</div>}

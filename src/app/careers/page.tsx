@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/sections/PageHero";
-import { ClayPreset } from "@/components/three/ClayPreset";
 import { Reveal } from "@/components/motion/Reveal";
 import { careersIntro, jobs } from "@/data/careers";
 
@@ -14,7 +13,7 @@ export const metadata: Metadata = {
 export default function CareersPage() {
   return (
     <>
-      <PageHero kicker="Careers" title={careersIntro} visual={<ClayPreset preset="custom-ai-apps" cameraZ={5} />} />
+      <PageHero kicker="Careers" title={careersIntro} scene={{ src: "/media/scenes/scene-2.webp", position: "55% 50%" }} />
       <section className="surface-paper py-[clamp(4rem,8vw,7rem)]">
         <Reveal variant="stagger" className="wrap border-t border-line-light">
           {jobs.map((j, i) => (

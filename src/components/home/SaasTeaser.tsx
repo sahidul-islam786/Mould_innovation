@@ -6,10 +6,10 @@ import { CinematicScene } from "@/components/motion/CinematicScene";
 
 export function SaasTeaser() {
   return (
-    <section aria-labelledby="saas-title" className="surface-ink relative overflow-hidden py-[clamp(7rem,13vw,12rem)]">
-      <CinematicScene src="/media/scenes/scene-6.webp" position="50% 70%" shade="left" />
-      <div className="wrap relative grid gap-14 lg:grid-cols-12">
-        <div className="lg:col-span-6">
+    <section aria-labelledby="saas-title" className="surface-ink relative flex min-h-[100svh] flex-col overflow-hidden pb-[clamp(3rem,6vw,5rem)] pt-[clamp(6rem,10vw,9rem)]">
+      <CinematicScene src="/media/scenes/scene-6.webp" position="50% 75%" shade="top" travel="up" />
+      <div className="wrap relative flex flex-1 flex-col justify-between gap-14">
+        <div className="max-w-[36rem]">
           <p className="eyebrow text-muted-dark"><span className="mr-3 text-brand-red-light">05</span>{saas.title}</p>
           <RevealText as="h2" id="saas-title" className="font-expanded mt-4 text-h1">
             {saas.product}
@@ -26,11 +26,11 @@ export function SaasTeaser() {
           </Reveal>
         </div>
         {/* Capture → Connect → Collaborate is a real sequence on the source, so it is numbered. */}
-        <Reveal variant="stagger" className="self-end border-t border-line-dark lg:col-span-5 lg:col-start-8">
+        <Reveal variant="stagger" className="grid border-t border-white/15 sm:grid-cols-3">
           {saas.actions.map((a, i) => (
-            <div key={a} className="flex items-baseline gap-6 border-b border-line-dark py-6">
+            <div key={a} className="flex items-baseline gap-4 py-5 sm:pr-6">
               <span className="text-sm text-brand-red-light">{i + 1}</span>
-              <span className="font-expanded text-h2">{a}</span>
+              <span className="font-expanded text-h3">{a}</span>
             </div>
           ))}
         </Reveal>

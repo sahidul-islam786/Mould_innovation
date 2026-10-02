@@ -19,7 +19,7 @@ const serviceFor: Record<string, string> = {
 export function Capabilities() {
   return (
     <section aria-labelledby="cap-title" className="surface-ink relative overflow-hidden py-[clamp(6rem,11vw,10rem)]">
-      <CinematicScene src="/media/scenes/scene-4.webp" position="50% 45%" shade="center" />
+      <CinematicScene src="/media/scenes/scene-4.webp" position="50% 40%" shade="center" travel="in" />
       <div className="wrap relative">
         <p className="eyebrow text-muted-dark">
           <span className="mr-3 text-brand-red-light">03</span>Expertise
@@ -27,7 +27,7 @@ export function Capabilities() {
         <RevealText as="h2" id="cap-title" className="font-expanded mt-4 max-w-[16ch] text-h2">
           {home.expertiseLead}
         </RevealText>
-        <Reveal variant="stagger" className="mt-14 grid border-l border-t border-line-dark bg-ink/40 backdrop-blur-[2px] sm:grid-cols-2 lg:grid-cols-3">
+        <Reveal variant="stagger" className="mt-14 grid border-l border-t border-line-dark bg-ink/55 sm:grid-cols-2 lg:grid-cols-3">
           {home.expertise.map((item) => {
             const svc = serviceFor[item] ? getService(serviceFor[item]) : undefined;
             const body = (

@@ -16,14 +16,14 @@ export function CtaBand() {
 
   return (
     <section aria-labelledby="cta-title" className="surface-ink relative overflow-hidden">
-      <CinematicScene src="/media/scenes/scene-7.webp" position="50% 55%" shade="left" />
-      <div className="wrap relative grid min-h-[90svh] items-center gap-10 py-24 lg:grid-cols-12">
-        <div className="relative z-10 lg:col-span-7">
+      <CinematicScene src="/media/scenes/scene-7.webp" position="50% 55%" shade="bottom" travel="in" />
+      <div className="wrap relative flex min-h-[92svh] flex-col items-center justify-end pb-[clamp(4rem,8vw,7rem)] pt-24 text-center">
+        <div className="relative z-10 flex flex-col items-center">
           <p className="eyebrow text-brand-red-light">{home.ctaKicker}</p>
           <RevealText as="h2" id="cta-title" className="font-expanded mt-5 max-w-[14ch] text-h1">
             {home.ctaTitle}
           </RevealText>
-          <div className="mt-10 flex flex-wrap gap-3">
+          <div className="mt-10 flex flex-wrap justify-center gap-3">
             <Magnetic>
               <Button href={company.discoveryCall.href}>{company.discoveryCall.label}</Button>
             </Magnetic>

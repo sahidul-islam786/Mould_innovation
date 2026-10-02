@@ -4,29 +4,21 @@ import { useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import { Clay } from "@/components/three/Clay";
-import { raw, stageAt, type ClayParams } from "@/components/three/presets";
+import { CinematicScene } from "@/components/motion/CinematicScene";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
-// The About story as one scroll chapter: the clay stays in view and is moulded from raw to the
-// hexagon as the three story paragraphs pass. Mobile/reduced motion: paragraphs stack normally.
+// The About story as one scroll chapter inside a sticky world (creation: human and machine hands).
+// Each paragraph brightens as it reaches the reading line. Reduced motion: plain stacked text.
 export function ClayChapter({ story }: { story: string[] }) {
   const section = useRef<HTMLElement>(null);
-  const target = useRef<ClayParams>({ ...raw });
 
   useGSAP(
     () => {
-      ScrollTrigger.create({
-        trigger: section.current,
-        start: "top 60%",
-        end: "bottom 60%",
-        onUpdate: (st) => Object.assign(target.current, stageAt(st.progress)),
-      });
       const mm = gsap.matchMedia();
       mm.add("(prefers-reduced-motion: no-preference)", () => {
         gsap.utils.toArray<HTMLElement>("[data-para]").forEach((el) => {
-          gsap.fromTo(el, { opacity: 0.18 }, { opacity: 1, ease: "none", scrollTrigger: { trigger: el, start: "top 80%", end: "top 45%", scrub: true } });
+          gsap.fromTo(el, { opacity: 0.2, y: 24 }, { opacity: 1, y: 0, ease: "none", scrollTrigger: { trigger: el, start: "top 85%", end: "top 50%", scrub: true } });
         });
       });
       return () => mm.revert();
@@ -35,16 +27,14 @@ export function ClayChapter({ story }: { story: string[] }) {
   );
 
   return (
-    <section ref={section} className="surface-ink tech-grid relative">
-      <div className="wrap grid gap-10 lg:grid-cols-12">
-        <div className="lg:col-span-5">
-          <div className="sticky top-0 h-[50svh] lg:h-[100svh]">
-            <Clay target={target} className="h-full w-full" cameraZ={4.4} />
-          </div>
-        </div>
-        <div className="flex flex-col gap-[18svh] pb-[18svh] pt-[6svh] lg:col-span-7 lg:pt-[20svh]">
+    <section ref={section} className="surface-ink relative">
+      <div className="sticky top-0 h-[100svh] overflow-hidden">
+        <CinematicScene src="/media/scenes/scene-2.webp" position="50% 50%" shade="right" travel="left" />
+      </div>
+      <div className="wrap relative -mt-[100svh] grid grid-cols-12 gap-6">
+        <div className="col-span-12 flex flex-col gap-[28svh] py-[30svh] lg:col-span-6 lg:col-start-7">
           {story.map((p) => (
-            <p key={p} data-para className="font-semi-expanded text-[clamp(1.375rem,2.4vw,2.25rem)] leading-[1.25]">
+            <p key={p} data-para className="font-semi-expanded text-[clamp(1.25rem,2vw,1.875rem)] leading-[1.3] [text-shadow:0_2px_20px_rgb(0_0_0/0.8)]">
               {p}
             </p>
           ))}

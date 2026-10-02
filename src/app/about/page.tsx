@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      <PageHero kicker={about.title} title={about.lead} />
+      <PageHero kicker={about.title} title={about.lead} scene={{ src: "/media/scenes/scene-6.webp", position: "50% 70%" }} />
       <ClayChapter story={about.story} />
 
       {/* The two photos used on the live About page, with their original credits. */}

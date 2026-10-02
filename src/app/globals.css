@@ -48,13 +48,13 @@
   --font-display: var(--font-display), ui-sans-serif, system-ui, sans-serif;
 
   /* Controlled type scale: big type only where it earns it. */
-  --text-display: clamp(2.75rem, 5.6vw, 5.5rem);
+  --text-display: clamp(2.375rem, 4.4vw, 4.25rem);
   --text-display--line-height: 0.98;
-  --text-h1: clamp(2.25rem, 4.2vw, 4rem);
+  --text-h1: clamp(1.875rem, 3.2vw, 3rem);
   --text-h1--line-height: 1.02;
-  --text-h2: clamp(1.75rem, 3.1vw, 3rem);
+  --text-h2: clamp(1.5rem, 2.4vw, 2.375rem);
   --text-h2--line-height: 1.08;
-  --text-h3: clamp(1.125rem, 1.5vw, 1.5rem);
+  --text-h3: clamp(1.0625rem, 1.3vw, 1.3125rem);
   --text-h3--line-height: 1.25;
   --text-body: clamp(1rem, 1vw, 1.0625rem);
   --text-body--line-height: 1.6;
@@ -267,7 +267,8 @@ body {
 
 /* Small source images are upscaled: a touch of softening and contrast keeps them cinematic, not pixelated. */
 .scene-img {
-  filter: saturate(1.05) contrast(1.06);
+  image-rendering: high-quality;
+  backface-visibility: hidden;
 }
 
 @media (max-width: 767px) {
@@ -287,7 +288,7 @@ body {
   background-image: radial-gradient(rgb(255 74 80 / 0.8) 1.4px, transparent 2.2px), radial-gradient(rgb(244 242 238 / 0.55) 1.2px, transparent 2px);
   background-size: 340px 340px, 470px 470px;
   background-position: 40px 60px, 210px 300px;
-  opacity: 0.45;
+  opacity: 0.3;
 }
 
 .grain-local {

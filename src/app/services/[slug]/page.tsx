@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PageHero } from "@/components/sections/PageHero";
-import { ClayPreset } from "@/components/three/ClayPreset";
 import { Reveal } from "@/components/motion/Reveal";
 import { RevealText } from "@/components/motion/RevealText";
 import { Button } from "@/components/buttons/Button";
@@ -10,6 +9,16 @@ import { getService, services } from "@/data/services";
 import { company } from "@/data/company";
 
 export const dynamicParams = false;
+
+// Each service opens in the world that matches it.
+const sceneFor: Record<string, { src: string; position: string }> = {
+  "ai-automation-agents": { src: "/media/scenes/scene-5.webp", position: "42% 40%" },
+  "ai-chatbots-voicebots": { src: "/media/scenes/scene-2.webp", position: "56% 50%" },
+  "custom-ai-apps": { src: "/media/scenes/scene-4.webp", position: "55% 45%" },
+  "data-predictive-analytics": { src: "/media/scenes/scene-6.webp", position: "55% 70%" },
+  "computer-vision-visual-search": { src: "/media/scenes/scene-1.webp", position: "72% 32%" },
+  "ai-consulting-llmops-governance": { src: "/media/scenes/scene-7.webp", position: "55% 55%" },
+};
 
 export function generateStaticParams() {
   return services.map((s) => ({ slug: s.slug }));
@@ -37,7 +46,7 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
         title={s.title}
         lead={s.tagline}
         crumbs={[{ label: "Services", href: "/services/" }, { label: s.title }]}
-        visual={<ClayPreset preset={s.slug} cameraZ={4.4} />}
+        scene={sceneFor[s.slug]}
       />
 
       {/* Keyword line from the source page, shown as a quiet tag row. */}

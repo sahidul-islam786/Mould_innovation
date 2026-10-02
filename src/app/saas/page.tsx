@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function SaasPage() {
   return (
     <>
-      <PageHero kicker={saas.title} title={saas.product} lead={saas.intro}>
+      <PageHero kicker={saas.title} title={saas.product} lead={saas.intro} scene={{ src: "/media/scenes/scene-6.webp", position: "50% 70%" }}>
         <p className="font-semi-expanded mt-6 text-h3 font-semibold text-brand-red-light">{saas.productLine}</p>
         <div className="mt-10">
           <Button href={saas.cta.href}>{saas.cta.label}</Button>

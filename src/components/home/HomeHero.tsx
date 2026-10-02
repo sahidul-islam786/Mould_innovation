@@ -49,7 +49,7 @@ export function HomeHero() {
           })
           .to("[data-hero-type]", { yPercent: -18, opacity: 0.15, filter: "blur(6px)", ease: "none" }, 0)
           .to("[data-hero-index]", { x: 40, opacity: 0, ease: "none" }, 0)
-          .to("[data-hero-scene]", { scale: 1.12, yPercent: 4, ease: "none" }, 0);
+          .to("[data-hero-scene]", { yPercent: 6, ease: "none" }, 0);
       });
       return () => mm.revert();
     },
@@ -59,7 +59,7 @@ export function HomeHero() {
   return (
     <section ref={section} className="surface-ink relative flex min-h-[100svh] flex-col overflow-hidden">
       <div data-hero-scene className="absolute inset-0">
-        <CinematicScene src="/media/scenes/scene-1.webp" position="68% 35%" mobilePosition="62% 30%" shade="left" />
+        <CinematicScene src="/media/scenes/scene-1.webp" position="70% 32%" mobilePosition="63% 30%" shade="left" pointer travel="in" />
       </div>
 
       <div className="wrap relative grid flex-1 grid-cols-12 items-end gap-6 pb-[clamp(2.5rem,6vh,4.5rem)] pt-[calc(var(--header-h)+3rem)]">
@@ -68,7 +68,7 @@ export function HomeHero() {
             <span className="h-px w-8 bg-brand-red" />
             {company.name}
           </p>
-          <h1 data-hero-title className="reveal-text font-expanded max-w-[11ch] text-display tracking-[-0.045em]">
+          <h1 data-hero-title className="reveal-text font-expanded max-w-[12ch] text-display tracking-[-0.04em]">
             {home.heroTitle}
           </h1>
           <div data-hero-rule className="mt-8 h-px w-full max-w-[34rem] origin-left bg-gradient-to-r from-brand-red via-line-dark to-transparent" />
@@ -87,12 +87,12 @@ export function HomeHero() {
 
         {/* Technical index of the six real services. */}
         <nav aria-label="Services index" data-hero-index className="col-span-12 self-end max-lg:hidden lg:col-span-3 lg:col-start-10">
-          <ol className="border-l border-line-dark bg-ink/55 py-2 backdrop-blur-[3px]">
+          <ol className="border-l border-white/15">
             {services.map((s, i) => (
               <li key={s.slug}>
-                <Link href={`/services/${s.slug}/`} className="group flex items-baseline gap-4 py-2.5 pl-5 transition-colors hover:text-paper">
+                <Link href={`/services/${s.slug}/`} className="group flex items-baseline gap-3 py-1.5 pl-4 transition-colors hover:text-paper [text-shadow:0_1px_12px_rgb(0_0_0/0.9)]">
                   <span className="eyebrow text-brand-red-light">{String(i + 1).padStart(2, "0")}</span>
-                  <span className="text-sm text-paper/55 transition-colors group-hover:text-paper">{s.title}</span>
+                  <span className="text-[0.8125rem] text-paper/60 transition-colors group-hover:text-paper">{s.title}</span>
                 </Link>
               </li>
             ))}

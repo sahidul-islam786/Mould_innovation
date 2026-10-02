@@ -16,6 +16,7 @@ gsap.registerPlugin(ScrollTrigger, useGSAP);
 export function ServicesShowcase() {
   const section = useRef<HTMLElement>(null);
   const [active, setActive] = useState(0);
+  const last = useRef(0);
 
   const select = (i: number) => setActive(i);
 
@@ -32,7 +33,10 @@ export function ServicesShowcase() {
           onUpdate: (st) => {
             gsap.set("[data-rail-fill]", { scaleY: st.progress });
             const i = Math.min(services.length - 1, Math.floor(st.progress * services.length));
-            setActive(i);
+            if (i !== last.current) {
+              last.current = i;
+              setActive(i);
+            }
           },
         });
       });
@@ -44,7 +48,7 @@ export function ServicesShowcase() {
   return (
     <section ref={section} aria-labelledby="services-title" className="surface-ink">
       <div data-pin className="relative overflow-hidden lg:h-[100svh]">
-        <CinematicScene src="/media/scenes/scene-3.webp" position="62% 50%" mobilePosition="70% 50%" shade="left" />
+        <CinematicScene src="/media/scenes/scene-3.webp" position="64% 50%" mobilePosition="70% 50%" shade="left" travel="left" />
 
         <div className="wrap relative flex h-full flex-col justify-center py-[clamp(4rem,7vw,6rem)] lg:py-[calc(var(--header-h)+1rem)]">
           <div className="flex items-end justify-between gap-6">

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/sections/PageHero";
-import { ClayPreset } from "@/components/three/ClayPreset";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { Button } from "@/components/buttons/Button";
 import { company } from "@/data/company";
@@ -16,7 +15,7 @@ export default function ContactPage() {
   const l = contact.labels;
   return (
     <>
-      <PageHero kicker={contact.kicker} title={contact.title} lead={contact.intro} visual={<ClayPreset preset="hexagon" cameraZ={4.6} />}>
+      <PageHero kicker={contact.kicker} title={contact.title} lead={contact.intro} scene={{ src: "/media/scenes/scene-7.webp", position: "60% 50%" }}>
         <div className="mt-10">
           <Button href={company.discoveryCall.href}>{company.discoveryCall.label}</Button>
         </div>
