@@ -6,6 +6,7 @@ import { Header } from "@/components/navigation/Header";
 import { Footer } from "@/components/footer/Footer";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { SmoothScroll } from "@/components/motion/SmoothScroll";
+import { Cursor } from "@/components/motion/Cursor";
 import { company } from "@/data/company";
 
 // One family; the width axis gives the expanded display cut (spec 6.2).
@@ -45,6 +46,22 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <CtaBand />
         <Footer />
         <div aria-hidden className="grain" />
+        <Cursor />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: company.legalName,
+              url: company.siteUrl,
+              email: company.email,
+              telephone: company.phone,
+              address: { "@type": "PostalAddress", streetAddress: "Lords 605, 7/1 Lord Sinha Road", addressLocality: "Kolkata", postalCode: "700071", addressCountry: "IN" },
+              sameAs: company.social.map((s) => s.href),
+            }),
+          }}
+        />
       </body>
     </html>
   );

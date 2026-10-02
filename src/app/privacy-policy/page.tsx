@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { PagePlaceholder } from "@/components/sections/PagePlaceholder";
+import { LegalPage } from "@/components/sections/LegalPage";
+import { legal } from "@/data/legal";
 
-export const metadata: Metadata = { title: "Privacy Policy" };
+export const metadata: Metadata = { title: "Privacy Policy", alternates: { canonical: "/privacy-policy/" } };
 
 export default function PrivacyPolicyPage() {
-  return <PagePlaceholder title="Privacy Policy" />;
+  return <LegalPage page={legal["privacy-policy"]} navTitle="Privacy Policy" />;
 }

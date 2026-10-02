@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { PagePlaceholder } from "@/components/sections/PagePlaceholder";
+import { LegalPage } from "@/components/sections/LegalPage";
+import { legal } from "@/data/legal";
 
-export const metadata: Metadata = { title: "Terms & Conditions" };
+export const metadata: Metadata = { title: "Terms & Conditions", alternates: { canonical: "/terms-and-conditions/" } };
 
 export default function TermsPage() {
-  return <PagePlaceholder title="Terms & Conditions" />;
+  return <LegalPage page={legal["terms-and-conditions"]} navTitle="Terms & Conditions" />;
 }

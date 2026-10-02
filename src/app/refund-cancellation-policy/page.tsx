@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { PagePlaceholder } from "@/components/sections/PagePlaceholder";
+import { LegalPage } from "@/components/sections/LegalPage";
+import { legal } from "@/data/legal";
 
-export const metadata: Metadata = { title: "Refund & Cancellation Policy" };
+export const metadata: Metadata = { title: "Refund & Cancellation Policy", alternates: { canonical: "/refund-cancellation-policy/" } };
 
 export default function RefundPolicyPage() {
-  return <PagePlaceholder title="Refund & Cancellation Policy" />;
+  return <LegalPage page={legal["refund-cancellation-policy"]} navTitle="Refund & Cancellation Policy" />;
 }

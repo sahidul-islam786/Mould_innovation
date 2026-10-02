@@ -27,9 +27,26 @@ async function walk(dir) {
   return out;
 }
 
-// Haystack: all string literals in src/data, JSON-decoded so escapes match.
+// --rendered: haystack is the visible text of the built site (out/**/*.html) instead of src/data.
+const rendered = process.argv.includes("--rendered");
+// Shown only after an interaction, so absent from static HTML; checked by the form test instead.
+if (rendered) IGNORE.add(norm("Thanks for submitting!"));
 let hay = "";
-for (const f of await walk(path.join(root, "src/data"))) {
+if (rendered) {
+  const decode = (t) => t.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&#x27;|&#39;/g, "'").replace(/&nbsp;/g, " ");
+  const html = async (dir) => {
+    for (const e of await readdir(dir, { withFileTypes: true })) {
+      const p = path.join(dir, e.name);
+      if (e.isDirectory() && e.name !== "_next") await html(p);
+      else if (e.name.endsWith(".html")) {
+        const src = (await readFile(p, "utf8")).replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/g, " ");
+        hay += " " + norm(decode(src.replace(/<[^>]+>/g, " ")));
+      }
+    }
+  };
+  await html(path.join(root, "out"));
+}
+for (const f of rendered ? [] : await walk(path.join(root, "src/data"))) {
   const src = await readFile(f, "utf8");
   for (const m of src.matchAll(/"((?:[^"\\]|\\.)*)"|`((?:[^`\\]|\\.)*)`/g)) {
     try {
@@ -58,7 +75,7 @@ for (const f of (await readdir(dir)).filter((n) => n.endsWith(".json")).sort()) 
       // ("…08:28:13 These Terms", "…West Bengal All concerns"); those are split points too.
       const pieces = line
         .split(/\s*•\s*|,\s+|(?<=[.!?:])\s+|\s+(?=Last updated on)|(?<=\d\d:\d\d:\d\d)\s+|(?<=West Bengal)\s+(?=All )/)
-        .map(norm)
+        .map((x) => norm(x).replace(/\.$/, ""))
         .filter((x) => x.length > 2);
       const lost = pieces.filter((x) => !hay.includes(x));
       if (pieces.length > 1 && !lost.length) {
@@ -71,5 +88,5 @@ for (const f of (await readdir(dir)).filter((n) => n.endsWith(".json")).sort()) 
     }
   }
 }
-console.log(`${checked} source lines checked, ${restructured} restructured (all pieces present), ${missing} missing`);
+console.log(`${rendered ? "[rendered out/] " : "[src/data] "}${checked} source lines checked, ${restructured} restructured (all pieces present), ${missing} missing`);
 process.exit(missing ? 1 : 0);

@@ -8,6 +8,7 @@ import { Clay } from "@/components/three/Clay";
 import { raw, lerpParams, hexagon, type ClayParams } from "@/components/three/presets";
 import { RevealText } from "@/components/motion/RevealText";
 import { Button } from "@/components/buttons/Button";
+import { Magnetic } from "@/components/motion/Magnetic";
 import { company } from "@/data/company";
 import { home } from "@/data/pages";
 
@@ -51,7 +52,9 @@ export function HomeHero() {
             {home.heroSub}
           </p>
           <div data-hero-fade className="flex flex-wrap gap-3">
-            <Button href={company.discoveryCall.href}>{company.discoveryCall.label}</Button>
+            <Magnetic>
+              <Button href={company.discoveryCall.href}>{company.discoveryCall.label}</Button>
+            </Magnetic>
             <Button href="/services/" variant="ghost">
               Explore services
             </Button>
