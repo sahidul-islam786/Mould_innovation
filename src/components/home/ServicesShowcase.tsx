@@ -29,6 +29,7 @@ export function ServicesShowcase() {
           start: "top top",
           end: () => `+=${window.innerHeight * 2.6}`,
           pin: true,
+          anticipatePin: 1,
           scrub: true,
           onUpdate: (st) => {
             gsap.set("[data-rail-fill]", { scaleY: st.progress });

@@ -44,10 +44,11 @@ export function HomeHero() {
               start: "top top",
               end: "+=90%",
               pin: true,
+              anticipatePin: 1,
               scrub: 0.8,
             },
           })
-          .to("[data-hero-type]", { yPercent: -18, opacity: 0.15, filter: "blur(6px)", ease: "none" }, 0)
+          .to("[data-hero-type]", { yPercent: -18, opacity: 0.12, ease: "power1.in" }, 0)
           .to("[data-hero-index]", { x: 40, opacity: 0, ease: "none" }, 0)
           .to("[data-hero-scene]", { yPercent: 6, ease: "none" }, 0);
       });
@@ -59,7 +60,7 @@ export function HomeHero() {
   return (
     <section ref={section} className="surface-ink relative flex min-h-[100svh] flex-col overflow-hidden">
       <div data-hero-scene className="absolute inset-0">
-        <CinematicScene src="/media/scenes/scene-1.webp" position="38% 30%" mobilePosition="50% 25%" shade="left" pointer travel="approach" />
+        <CinematicScene src="/media/scenes/scene-1.webp" position="38% 30%" mobilePosition="50% 25%" shade="left" pointer eager travel="approach" />
       </div>
 
       <div className="wrap relative grid flex-1 grid-cols-12 items-end gap-6 pb-[clamp(2.5rem,6vh,4.5rem)] pt-[calc(var(--header-h)+3rem)]">

@@ -4,7 +4,7 @@
 //   realesrgan-ncnn-vulkan -i art/scenes-src/scene-N.png -o .cache/scenes-x4/scene-N.png -n realesrgan-x4plus -s 4
 // Steps: 1) crop to 16:9 at a per-scene focal point, 2) colour grade to the brand palette: reds are
 // kept, every other hue becomes neutral silver/graphite (removes blue/cyan/purple), 3) resize to
-// 3840 / 2560 / 1280 WebP (no extra sharpening). Re-run: node scripts/process-scenes.mjs
+// 3840 / 2560 / 1280, AVIF 4:4:4 + WebP fallback (no extra sharpening). Re-run: node scripts/process-scenes.mjs
 import { access, readdir, mkdir } from "node:fs/promises";
 import path from "node:path";
 import sharp from "sharp";
@@ -58,11 +58,12 @@ for (const f of files) {
   const graded = await grade(cropped);
   const gradedPng = await graded.png().toBuffer();
   for (const W of [3840, 2560, 1280]) {
-    const out = path.join(outDir, W === 2560 ? `scene-${n}.webp` : `scene-${n}-${W}.webp`);
-    await sharp(gradedPng)
-      .resize({ width: W, kernel: "lanczos3" })
-      .webp({ quality: W === 3840 ? 84 : 86, smartSubsample: true, effort: 5 })
-      .toFile(out);
+    const base = path.join(outDir, W === 2560 ? `scene-${n}` : `scene-${n}-${W}`);
+    const sized = await sharp(gradedPng).removeAlpha().resize({ width: W, kernel: "lanczos3" }).png().toBuffer();
+    // WebP (4:2:0 colour) is the fallback; AVIF keeps full-resolution colour (4:4:4) so the red
+    // light edges stay crisp instead of smearing, at a smaller size.
+    await sharp(sized).webp({ quality: W === 3840 ? 84 : 86, smartSubsample: true, effort: 5 }).toFile(`${base}.webp`);
+    await sharp(sized).avif({ quality: 62, chromaSubsampling: "4:4:4", effort: 5 }).toFile(`${base}.avif`);
   }
   const meta = await sharp(path.join(outDir, `scene-${n}.webp`)).metadata();
   console.log(`scene-${n}: ${file === x4 ? "AI x4" : "original"} ${w}x${h} -> crop ${cw}x${ch} -> ${meta.width}x${meta.height} (+3840, 1280)`);

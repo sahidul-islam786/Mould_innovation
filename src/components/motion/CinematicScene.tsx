@@ -7,6 +7,14 @@ import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
+// Portrait screens: the 16:9 artwork covers the height, so it renders ~1.96 x the viewport height
+// wide; landscape: ~1.1 x the viewport width (3% bleed + camera scale).
+const SIZES = "(max-aspect-ratio: 16/9) 196vh, 110vw";
+const set = (src: string, ext: "avif" | "webp") => {
+  const b = src.replace(/\.webp$/, "");
+  return `${b}-1280.${ext} 1280w, ${b}.${ext} 2560w, ${b}-3840.${ext} 3840w`;
+};
+
 type Shade = "left" | "right" | "bottom" | "top" | "center" | "none";
 
 // Camera personality per world. Values are start → end of the section's scroll range.
@@ -38,6 +46,7 @@ export function CinematicScene({
   shade = "left",
   pointer = false,
   travel = "right",
+  eager = false,
 }: {
   src: string;
   position?: string;
@@ -45,6 +54,7 @@ export function CinematicScene({
   shade?: Shade;
   pointer?: boolean;
   travel?: Travel;
+  eager?: boolean; // above-the-fold scene: load immediately; others load as they approach
 }) {
   const root = useRef<HTMLDivElement>(null);
 
@@ -69,13 +79,13 @@ export function CinematicScene({
         const [from, to] = PATHS[travel].map(soften);
         const tl = gsap.timeline({
           defaults: { ease: "none", force3D: true },
-          scrollTrigger: { trigger: section, start: "top bottom", end: "bottom top", scrub: 1, refreshPriority: -1 },
+          scrollTrigger: { trigger: section, start: "top bottom", end: "bottom top", scrub: 0.6, refreshPriority: -1 },
         });
-        tl.fromTo(img, from, { ...to, duration: 1 }, 0)
+        tl.fromTo(img, from, { ...to, duration: 1, ease: "sine.inOut" }, 0)
           .fromTo(dust, { yPercent: -10 }, { yPercent: 10, duration: 1 }, 0)
           // enter from black, recede on exit
-          .fromTo(el, { opacity: 0.2 }, { opacity: 1, duration: 0.3 }, 0)
-          .to(el, { opacity: 0.45, duration: 0.25 }, 0.75);
+          .fromTo(el, { opacity: 0.2 }, { opacity: 1, duration: 0.3, ease: "power1.out" }, 0)
+          .to(el, { opacity: 0.45, duration: 0.25, ease: "power1.in" }, 0.75);
 
         if (!pointer || !matchMedia("(pointer: fine)").matches) return;
         const px = gsap.quickTo(img, "x", { duration: 1.4, ease: "power2" });
@@ -102,20 +112,25 @@ export function CinematicScene({
   };
 
   return (
-    <div ref={root} aria-hidden className="cinematic-mask pointer-events-none absolute inset-0 overflow-hidden bg-ink [perspective:1600px]">
+    <div ref={root} aria-hidden className="cinematic-mask pointer-events-none absolute inset-0 overflow-hidden bg-ink [perspective:1600px] [transform:translateZ(0)] will-change-[opacity]">
       <div data-scene-img className="absolute inset-[-3%] will-change-transform">
-        {/* eslint-disable-next-line @next/next/no-img-element -- decorative background, pre-sized webp */}
-        <img
-          src={src}
-          srcSet={`${src.replace(/\.webp$/, "-1280.webp")} 1280w, ${src} 2560w, ${src.replace(/\.webp$/, "-3840.webp")} 3840w`}
-          sizes="100vw"
-          alt=""
-          decoding="async"
-          className="scene-img h-full w-full object-cover"
-          style={{ objectPosition: position, ["--mpos" as string]: mobilePosition ?? position }}
-        />
+        {/* AVIF (full-resolution colour) first, WebP fallback; same responsive widths for both. */}
+        <picture>
+          <source type="image/avif" srcSet={set(src, "avif")} sizes={SIZES} />
+          <img
+            src={src}
+            srcSet={set(src, "webp")}
+            sizes={SIZES}
+            alt=""
+            decoding="async"
+            loading={eager ? "eager" : "lazy"}
+            fetchPriority={eager ? "high" : "auto"}
+            className="scene-img h-full w-full object-cover"
+            style={{ objectPosition: position, ["--mpos" as string]: mobilePosition ?? position }}
+          />
+        </picture>
       </div>
-      <div data-scene-dust className="dust-near absolute inset-[-12%]" />
+      <div data-scene-dust className="dust-near absolute inset-[-12%] will-change-transform" />
       <div className="absolute inset-0 bg-[radial-gradient(130%_100%_at_50%_45%,transparent_55%,rgb(11_11_12/0.6)_100%)]" />
       <div className="absolute inset-0" style={{ background: shadeBg[shade] }} />
       {/* Phones: text spans the full width, so the artwork sits slightly further back. */}

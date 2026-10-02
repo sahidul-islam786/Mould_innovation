@@ -24,15 +24,24 @@ export function Header() {
   // Transparent over the hero, solid after scrolling; slides away on scroll down, back on scroll up.
   useEffect(() => {
     let last = window.scrollY;
-    const onScroll = () => {
+    let frame = 0;
+    const update = () => {
+      frame = 0;
       const y = window.scrollY;
       setSolid(y > SOLID_AFTER);
       setHidden(y > last && y > 240);
       last = y;
     };
-    onScroll();
+    // One state check per animation frame; React skips the render when values are unchanged.
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    update();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(frame);
+    };
   }, []);
 
   return (
