@@ -18,17 +18,17 @@ export const hexagon: ClayParams = { morph: 1, amp: 0.02, freq: 1.2, speed: 0.12
 // Keys match service slugs.
 export const servicePresets: Record<string, ClayParams> = {
   // Agents: a twisting, working form.
-  "ai-automation-agents": { morph: 0.12, amp: 0.13, freq: 2.4, speed: 0.45, twist: 1.3, stretch: 1.05, glow: 0.3 },
+  "ai-automation-agents": { morph: 0.42, amp: 0.13, freq: 2.4, speed: 0.45, twist: 1.3, stretch: 1.05, glow: 0.3 },
   // Chat & voice: soft, wave-like.
-  "ai-chatbots-voicebots": { morph: 0, amp: 0.32, freq: 0.85, speed: 0.55, twist: 0, stretch: 0.82, glow: 0.25 },
+  "ai-chatbots-voicebots": { morph: 0.3, amp: 0.22, freq: 0.85, speed: 0.55, twist: 0, stretch: 0.82, glow: 0.25 },
   // Custom apps: half-formed, structured.
-  "custom-ai-apps": { morph: 0.55, amp: 0.07, freq: 3.0, speed: 0.3, twist: 0.25, stretch: 1, glow: 0.3 },
+  "custom-ai-apps": { morph: 0.72, amp: 0.07, freq: 3.0, speed: 0.3, twist: 0.25, stretch: 1, glow: 0.3 },
   // Data: tall, finely textured.
-  "data-predictive-analytics": { morph: 0.18, amp: 0.16, freq: 4.2, speed: 0.32, twist: 0, stretch: 1.28, glow: 0.3 },
+  "data-predictive-analytics": { morph: 0.48, amp: 0.16, freq: 4.2, speed: 0.32, twist: 0, stretch: 1.28, glow: 0.3 },
   // Vision: a calm lens-like sphere.
-  "computer-vision-visual-search": { morph: 0, amp: 0.045, freq: 1.0, speed: 0.18, twist: 0, stretch: 1, glow: 0.55 },
+  "computer-vision-visual-search": { morph: 0.35, amp: 0.05, freq: 1.0, speed: 0.18, twist: 0, stretch: 1, glow: 0.55 },
   // Strategy: nearly formed, steady.
-  "ai-consulting-llmops-governance": { morph: 0.86, amp: 0.03, freq: 1.5, speed: 0.18, twist: 0, stretch: 1, glow: 0.35 },
+  "ai-consulting-llmops-governance": { morph: 0.95, amp: 0.03, freq: 1.5, speed: 0.18, twist: 0, stretch: 1, glow: 0.35 },
 };
 
 export const lerpParams = (a: ClayParams, b: ClayParams, t: number): ClayParams => ({

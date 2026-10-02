@@ -30,7 +30,7 @@ export function ProjectsIndex() {
         </p>
         <div className="mt-12 grid gap-16 md:grid-cols-2">
           {list.map((p, i) => (
-            <ProjectCard key={p.slug} project={p} priority={i === 0} className={i % 2 === 1 ? "md:mt-24" : ""} />
+            <ProjectCard key={p.slug} project={p} index={projects.indexOf(p)} priority={i === 0} className={i % 2 === 1 ? "md:mt-24" : ""} />
           ))}
         </div>
       </div>

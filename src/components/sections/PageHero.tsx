@@ -21,8 +21,8 @@ export function PageHero({
   children?: ReactNode;
 }) {
   return (
-    <section className="surface-ink relative overflow-hidden">
-      <div className="wrap relative grid min-h-[78svh] items-end gap-10 pb-[clamp(3rem,7vw,6rem)] pt-[calc(var(--header-h)+3rem)] lg:grid-cols-12">
+    <section className="surface-ink tech-grid relative overflow-hidden">
+      <div className="wrap relative grid min-h-[62svh] items-end gap-10 pb-[clamp(3rem,7vw,6rem)] pt-[calc(var(--header-h)+3rem)] lg:grid-cols-12">
         <div className="relative z-10 lg:col-span-7">
           {crumbs && (
             <nav aria-label="Breadcrumb" className="mb-10 text-sm text-muted-dark">
@@ -44,7 +44,7 @@ export function PageHero({
               </ol>
             </nav>
           )}
-          {kicker && <p className="font-semi-expanded mb-5 text-brand-red-light">{kicker}</p>}
+          {kicker && <p className="eyebrow mb-5 text-brand-red-light">{kicker}</p>}
           <RevealText as="h1" trigger="load" className="font-expanded text-h1 font-extrabold tracking-[-0.04em]">
             {title}
           </RevealText>

@@ -1,33 +1,59 @@
+"use client";
+
 import Link from "next/link";
-import { RevealText } from "@/components/motion/RevealText";
-import { Reveal } from "@/components/motion/Reveal";
+import { useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SplitText } from "gsap/SplitText";
+import { useGSAP } from "@gsap/react";
 import { home } from "@/data/pages";
 
-// Live intro paragraph, set as an editorial statement.
-export function Statement() {
-  return (
-    <section className="surface-paper py-[clamp(6rem,14vw,12rem)]">
-      <div className="wrap grid gap-16 lg:grid-cols-12">
-        <RevealText as="h2" className="font-semi-expanded text-h1 font-bold tracking-[-0.035em] lg:col-span-9">
-          {home.introLead}
-        </RevealText>
+gsap.registerPlugin(ScrollTrigger, SplitText, useGSAP);
 
-        <div className="lg:col-span-7 lg:col-start-6">
-          <Reveal>
-            <p className="text-h3 text-muted-light">{home.introAudience}</p>
-          </Reveal>
-          <Reveal variant="stagger" className="mt-6 border-t border-line-light">
-            {home.introOutcomes.map((line) => (
-              <p key={line} className="font-semi-expanded border-b border-line-light py-5 text-h2 font-semibold tracking-[-0.025em]">
-                {line}
-              </p>
-            ))}
-          </Reveal>
-          <Reveal className="mt-10">
-            <Link href="/about/" className="inline-flex min-h-11 items-center border-b border-current pb-1 font-medium hover:text-brand-red-mid">
+// The live intro, read word by word: scroll lights each word from dim to full.
+// The section enters with a widening clip so the hero flows into it.
+export function Statement() {
+  const section = useRef<HTMLElement>(null);
+  useGSAP(
+    () => {
+      const mm = gsap.matchMedia();
+      mm.add("(prefers-reduced-motion: no-preference)", () => {
+        gsap.fromTo(section.current, { clipPath: "inset(6% 4% 0% 4%)" }, { clipPath: "inset(0% 0% 0% 0%)", ease: "none", scrollTrigger: { trigger: section.current, start: "top bottom", end: "top 30%", scrub: true } });
+        const split = SplitText.create("[data-words]", { type: "words" });
+        gsap.fromTo(split.words, { opacity: 0.16 }, { opacity: 1, stagger: 0.05, ease: "none", scrollTrigger: { trigger: "[data-words]", start: "top 75%", end: "bottom 45%", scrub: true } });
+        gsap.from("[data-grid-line]", { scaleX: 0, transformOrigin: "left", duration: 1.2, ease: "power3.inOut", stagger: 0.1, scrollTrigger: { trigger: section.current, start: "top 70%", once: true } });
+        return () => split.revert();
+      });
+      return () => mm.revert();
+    },
+    { scope: section },
+  );
+
+  return (
+    <section ref={section} aria-labelledby="statement-title" className="surface-charcoal tech-grid relative py-[clamp(5rem,10vw,9rem)]">
+      <div className="wrap">
+        <div className="grid grid-cols-12 gap-6">
+          <p className="eyebrow col-span-12 text-muted-dark lg:col-span-3">
+            <span className="mr-3 text-brand-red-light">01</span>About Mould Innovation
+          </p>
+          <div className="col-span-12 lg:col-span-9">
+            <h2 id="statement-title" data-words className="font-semi-expanded text-[clamp(1.5rem,2.9vw,2.75rem)] leading-[1.22] tracking-[-0.025em]">
+              {home.introLead} {home.introAudience} <span className="text-brand-red-light">{home.introOutcomes[0]}</span> <span className="text-brand-red-light">{home.introOutcomes[1]}</span> {home.introOutcomes[2]}
+            </h2>
+            <div className="mt-14 grid gap-px sm:grid-cols-3">
+              {home.introOutcomes.map((o, i) => (
+                <div key={o} className="pt-5">
+                  <div data-grid-line className="mb-5 h-px bg-line-dark" />
+                  <span className="eyebrow text-brand-red-light">{String(i + 1).padStart(2, "0")}</span>
+                  <p className="mt-3 text-sm text-paper/60">{o}</p>
+                </div>
+              ))}
+            </div>
+            <Link href="/about/" className="eyebrow mt-12 inline-flex items-center gap-3 text-paper/80 hover:text-paper">
+              <span className="h-px w-8 bg-brand-red" />
               About Mould Innovation
             </Link>
-          </Reveal>
+          </div>
         </div>
       </div>
     </section>

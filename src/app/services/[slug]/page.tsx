@@ -44,14 +44,14 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
       <section aria-label="Keywords" className="surface-ink border-t border-line-dark py-8">
         <ul className="wrap flex flex-wrap gap-2">
           {s.keywords.split(/,\s*/).map((k) => (
-            <li key={k} className="rounded-full border border-line-dark px-3 py-1 text-sm text-muted-dark">
+            <li key={k} className="rounded-[3px] border border-line-dark px-2.5 py-1 text-xs text-muted-dark">
               {k}
             </li>
           ))}
         </ul>
       </section>
 
-      <section className="surface-paper py-[clamp(5rem,10vw,8rem)]">
+      <section className="surface-paper py-[clamp(4rem,7vw,6rem)]">
         <div className="wrap grid gap-12 lg:grid-cols-12">
           <RevealText as="h2" className="font-expanded text-h2 font-extrabold tracking-[-0.03em] lg:col-span-7">
             {s.headline}
@@ -88,7 +88,7 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
                 .replace(/\.$/, "")
                 .split(/,\s*/)
                 .map((t) => (
-                  <li key={t} className="rounded-full border border-line-light px-4 py-1.5">
+                  <li key={t} className="rounded-[3px] border border-line-light px-3 py-1 text-sm">
                     {t}
                   </li>
                 ))}

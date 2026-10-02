@@ -17,13 +17,14 @@ export default function CareersPage() {
       <PageHero kicker="Careers" title={careersIntro} visual={<ClayPreset preset="custom-ai-apps" cameraZ={5} />} />
       <section className="surface-paper py-[clamp(4rem,8vw,7rem)]">
         <Reveal variant="stagger" className="wrap border-t border-line-light">
-          {jobs.map((j) => (
-            <Link key={j.slug} href={`/careers/${j.slug}/`} className="group grid items-baseline gap-2 border-b border-line-light py-8 md:grid-cols-[2fr_1.2fr_auto] md:gap-8">
-              <span className="font-expanded text-h3 font-extrabold tracking-[-0.02em] group-hover:text-brand-red-mid md:text-[clamp(1.5rem,2.6vw,2.5rem)]">{j.title}</span>
+          {jobs.map((j, i) => (
+            <Link key={j.slug} href={`/careers/${j.slug}/`} className="group grid items-baseline gap-2 border-b border-line-light py-7 transition-colors hover:bg-ink/[0.03] md:grid-cols-[3.5rem_2fr_1.2fr_auto] md:gap-8">
+              <span className="eyebrow text-brand-red-mid">{String(i + 1).padStart(2, "0")}</span>
+              <span className="font-expanded text-h3 uppercase tracking-[-0.01em] group-hover:text-brand-red-mid">{j.title}</span>
               <span className="text-muted-light">
                 {j.location} · {j.type}
               </span>
-              <span className="w-fit border-b border-current pb-1 text-sm font-medium">View Job</span>
+              <span className="eyebrow inline-flex w-fit items-center gap-2">View Job <span className="h-px w-6 bg-brand-red transition-all group-hover:w-10" /></span>
             </Link>
           ))}
         </Reveal>

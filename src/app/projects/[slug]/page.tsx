@@ -32,7 +32,7 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
       <PageHero title={p.title} crumbs={[{ label: "Projects", href: "/projects/" }, { label: p.title }]} lead={p.summary}>
         <ul className="mt-8 flex flex-wrap gap-2" aria-label="Services">
           {p.services.map((s) => (
-            <li key={s} className="rounded-full border border-line-dark px-4 py-1.5 text-sm">
+            <li key={s} className="rounded-[3px] border border-line-dark px-3 py-1 text-xs uppercase tracking-[0.1em]">
               {s}
             </li>
           ))}

@@ -25,7 +25,7 @@ export function Footer() {
       <div className="mx-auto max-w-[1600px] px-[var(--gutter)] pb-10 pt-20">
         <a
           href={`mailto:${company.email}`}
-          className="font-expanded group mb-20 block break-all text-[clamp(1.75rem,6.4vw,6.5rem)] font-extrabold leading-none tracking-[-0.045em] text-paper transition-colors duration-[var(--dur-standard)] hover:text-brand-red-light"
+          className="font-expanded group mb-20 block break-all text-[clamp(1.5rem,4.6vw,4.5rem)] font-semibold leading-none tracking-[-0.045em] text-paper transition-colors duration-[var(--dur-standard)] hover:text-brand-red-light"
         >
           {company.email}
           <span aria-hidden className="mt-6 block h-px w-full origin-left scale-x-[0.12] bg-brand-red transition-transform duration-700 ease-[var(--ease-out)] group-hover:scale-x-100" />

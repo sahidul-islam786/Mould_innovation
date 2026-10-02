@@ -38,7 +38,7 @@ export function SaasSteps({ actions, why }: { actions: string[]; why: string }) 
 
   return (
     <section ref={section} aria-labelledby="why-title" className="surface-ink">
-      <div className="wrap grid gap-10 py-[clamp(5rem,10vw,8rem)] lg:grid-cols-12">
+      <div className="wrap grid gap-10 py-[clamp(4rem,7vw,6rem)] lg:grid-cols-12">
         <div className="lg:col-span-6">
           <h2 id="why-title" className="font-expanded text-h2 font-extrabold tracking-[-0.03em]">
             Why Choose Wow! Circle?

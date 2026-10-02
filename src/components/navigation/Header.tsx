@@ -43,7 +43,7 @@ export function Header() {
         } ${solid ? "border-b border-white/10 bg-ink/55 backdrop-blur-xl backdrop-saturate-150" : "border-b border-transparent bg-transparent"}`}
       >
         <div className="mx-auto flex h-[var(--header-h)] max-w-[1600px] items-center justify-between gap-6 px-[var(--gutter)]">
-          <Logo height={40} />
+          <Logo height={34} />
 
           <nav aria-label="Main" className="max-lg:hidden">
             <ul className="flex items-center gap-1">
@@ -54,7 +54,7 @@ export function Header() {
                     <Link
                       href={item.href}
                       aria-current={active ? "page" : undefined}
-                      className="group relative inline-flex min-h-11 items-center px-3 text-[0.95rem] text-paper/80 transition-colors duration-[var(--dur-fast)] hover:text-paper aria-[current=page]:text-paper"
+                      className="group relative inline-flex min-h-11 items-center px-3 text-[0.875rem] text-paper/75 transition-colors duration-[var(--dur-fast)] hover:text-paper aria-[current=page]:text-paper"
                     >
                       {item.label}
                       <span

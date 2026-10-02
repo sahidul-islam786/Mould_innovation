@@ -35,16 +35,16 @@ export function ClayChapter({ story }: { story: string[] }) {
   );
 
   return (
-    <section ref={section} className="surface-ink relative">
+    <section ref={section} className="surface-ink tech-grid relative">
       <div className="wrap grid gap-10 lg:grid-cols-12">
         <div className="lg:col-span-5">
           <div className="sticky top-0 h-[50svh] lg:h-[100svh]">
             <Clay target={target} className="h-full w-full" cameraZ={4.4} />
           </div>
         </div>
-        <div className="flex flex-col gap-[30svh] pb-[30svh] lg:col-span-7 lg:pt-[25svh]">
+        <div className="flex flex-col gap-[18svh] pb-[18svh] pt-[6svh] lg:col-span-7 lg:pt-[20svh]">
           {story.map((p) => (
-            <p key={p} data-para className="font-semi-expanded text-h2 font-semibold tracking-[-0.025em]">
+            <p key={p} data-para className="font-semi-expanded text-[clamp(1.375rem,2.4vw,2.25rem)] leading-[1.25]">
               {p}
             </p>
           ))}

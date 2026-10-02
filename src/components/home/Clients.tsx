@@ -25,9 +25,12 @@ function Row({ dup = false }: { dup?: boolean }) {
 
 export function Clients() {
   return (
-    <section aria-labelledby="clients-title" className="surface-ink overflow-hidden py-[clamp(5rem,10vw,8rem)]">
+    <section aria-labelledby="clients-title" className="surface-ink overflow-hidden py-[clamp(4rem,7vw,6rem)]">
       <div className="wrap">
-        <RevealText as="h2" id="clients-title" className="font-expanded text-h2 font-extrabold tracking-[-0.03em]">
+        <p className="eyebrow text-muted-dark">
+          <span className="mr-3 text-brand-red-light">—</span>Trusted by
+        </p>
+        <RevealText as="h2" id="clients-title" className="font-expanded mt-4 text-h2">
           {home.clientsTitle}
         </RevealText>
       </div>

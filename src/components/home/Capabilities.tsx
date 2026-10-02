@@ -17,9 +17,12 @@ const serviceFor: Record<string, string> = {
 
 export function Capabilities() {
   return (
-    <section aria-labelledby="cap-title" className="surface-paper py-[clamp(6rem,12vw,10rem)]">
+    <section aria-labelledby="cap-title" className="surface-paper tech-grid-light py-[clamp(4.5rem,8vw,7rem)]">
       <div className="wrap">
-        <RevealText as="h2" id="cap-title" className="font-expanded max-w-[16ch] text-h2 font-extrabold tracking-[-0.03em]">
+        <p className="eyebrow text-muted-light">
+          <span className="mr-3 text-brand-red-mid">03</span>Expertise
+        </p>
+        <RevealText as="h2" id="cap-title" className="font-expanded mt-4 max-w-[16ch] text-h2">
           {home.expertiseLead}
         </RevealText>
         <Reveal variant="stagger" className="mt-14 grid border-l border-t border-line-light sm:grid-cols-2 lg:grid-cols-3">
@@ -27,11 +30,11 @@ export function Capabilities() {
             const svc = serviceFor[item] ? getService(serviceFor[item]) : undefined;
             const body = (
               <>
-                <span className="font-semi-expanded text-h3 font-semibold tracking-[-0.02em]">{item}</span>
+                <span className="font-semi-expanded text-[1.125rem]">{item}</span>
                 {svc && <span className="mt-auto pt-6 text-sm sm:pt-10 text-muted-light transition-colors group-hover:text-brand-red-mid">{svc.title}</span>}
               </>
             );
-            const cls = "group flex min-h-32 flex-col border-b border-r border-line-light p-6 sm:min-h-48 lg:p-8";
+            const cls = "group flex min-h-28 flex-col border-b border-r border-line-light p-6 sm:min-h-36";
             return svc ? (
               <Link key={item} href={`/services/${svc.slug}/`} className={`${cls} transition-colors duration-[var(--dur-standard)] hover:bg-ink/[0.04]`}>
                 {body}
