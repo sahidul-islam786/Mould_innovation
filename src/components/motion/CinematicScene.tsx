@@ -107,7 +107,7 @@ export function CinematicScene({
         {/* eslint-disable-next-line @next/next/no-img-element -- decorative background, pre-sized webp */}
         <img
           src={src}
-          srcSet={`${src.replace(/\.webp$/, "-1280.webp")} 1280w, ${src} 2560w`}
+          srcSet={`${src.replace(/\.webp$/, "-1280.webp")} 1280w, ${src} 2560w, ${src.replace(/\.webp$/, "-3840.webp")} 3840w`}
           sizes="100vw"
           alt=""
           decoding="async"

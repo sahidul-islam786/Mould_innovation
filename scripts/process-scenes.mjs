@@ -1,14 +1,17 @@
 // Builds the 7 scene backgrounds from the source artwork in art/scenes-src/scene-N.(png|jpg|webp).
-// 1) crop to 16:9 at a per-scene focal point, 2) colour grade to the brand palette: reds are kept,
-// every other hue becomes neutral silver/graphite (removes blue/cyan/purple), 3) Lanczos upscale to
-// 2560 px + sharpening, 4) WebP at 2560 and 1280 (phones). Drop in higher-resolution sources later
-// and re-run: node scripts/process-scenes.mjs
-import { readdir, mkdir } from "node:fs/promises";
+// If an AI super-resolved copy exists in .cache/scenes-x4/scene-N.png it is used instead.
+// Make those with Real-ESRGAN (realesrgan-ncnn-vulkan, model realesrgan-x4plus, scale 4):
+//   realesrgan-ncnn-vulkan -i art/scenes-src/scene-N.png -o .cache/scenes-x4/scene-N.png -n realesrgan-x4plus -s 4
+// Steps: 1) crop to 16:9 at a per-scene focal point, 2) colour grade to the brand palette: reds are
+// kept, every other hue becomes neutral silver/graphite (removes blue/cyan/purple), 3) resize to
+// 3840 / 2560 / 1280 WebP (no extra sharpening). Re-run: node scripts/process-scenes.mjs
+import { access, readdir, mkdir } from "node:fs/promises";
 import path from "node:path";
 import sharp from "sharp";
 
 const root = path.resolve(import.meta.dirname, "..");
 const srcDir = path.join(root, "art/scenes-src");
+const x4Dir = path.join(root, ".cache/scenes-x4");
 const outDir = path.join(root, "public/media/scenes");
 await mkdir(outDir, { recursive: true });
 
@@ -39,7 +42,9 @@ async function grade(input) {
 const files = (await readdir(srcDir)).filter((f) => /^scene-\d\.(png|jpe?g|webp)$/i.test(f)).sort();
 for (const f of files) {
   const n = Number(f.match(/scene-(\d)/)[1]);
-  const src = sharp(path.join(srcDir, f));
+  const x4 = path.join(x4Dir, `scene-${n}.png`);
+  const file = (await access(x4).then(() => true, () => false)) ? x4 : path.join(srcDir, f);
+  const src = sharp(file);
   const { width: w, height: h } = await src.metadata();
   // Crop to 16:9 (wider sources keep full width; taller ones crop around the focal point).
   let cw = w, ch = Math.round((w * 9) / 16);
@@ -49,17 +54,16 @@ for (const f of files) {
   }
   const left = Math.round((w - cw) / 2);
   const top = Math.round(Math.min(Math.max((h - ch) * (focusY[n] ?? 0.5), 0), h - ch));
-  const cropped = sharp(path.join(srcDir, f)).extract({ left, top, width: cw, height: ch });
+  const cropped = sharp(file).extract({ left, top, width: cw, height: ch });
   const graded = await grade(cropped);
   const gradedPng = await graded.png().toBuffer();
-  for (const W of [2560, 1280]) {
-    const out = path.join(outDir, W === 2560 ? `scene-${n}.webp` : `scene-${n}-1280.webp`);
+  for (const W of [3840, 2560, 1280]) {
+    const out = path.join(outDir, W === 2560 ? `scene-${n}.webp` : `scene-${n}-${W}.webp`);
     await sharp(gradedPng)
       .resize({ width: W, kernel: "lanczos3" })
-      .sharpen({ sigma: W === 2560 ? 1.1 : 0.7, m1: 0.5, m2: 2 })
-      .webp({ quality: W === 2560 ? 86 : 82, smartSubsample: true, effort: 5 })
+      .webp({ quality: W === 3840 ? 84 : 86, smartSubsample: true, effort: 5 })
       .toFile(out);
   }
   const meta = await sharp(path.join(outDir, `scene-${n}.webp`)).metadata();
-  console.log(`scene-${n}: source ${w}x${h} -> crop ${cw}x${ch} (${((2560 / cw) * 100) | 0}% upscale) -> ${meta.width}x${meta.height}`);
+  console.log(`scene-${n}: ${file === x4 ? "AI x4" : "original"} ${w}x${h} -> crop ${cw}x${ch} -> ${meta.width}x${meta.height} (+3840, 1280)`);
 }
