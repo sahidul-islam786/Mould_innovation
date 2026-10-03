@@ -29,7 +29,15 @@ export function ClayChapter({ story }: { story: string[] }) {
   return (
     <section ref={section} className="surface-ink relative">
       <div className="sticky top-0 h-[100svh] overflow-hidden">
-        <CinematicScene src="/media/scenes/scene-2.webp" position="35% 50%" shade="right" travel="forward" />
+        <CinematicScene
+          src="/media/scenes/scene-2.webp"
+          position="35% 50%"
+          shade="right"
+          travel="forward"
+          editorialText="AUTOMATION"
+          editorialPosition="center"
+          telemetry={{ code: "WORLD 02", label: "AUTOMATION FACTORY", coordinates: "HIST // MOULDING INTELLIGENCE" }}
+        />
       </div>
       <div className="wrap relative -mt-[100svh] grid grid-cols-12 gap-6">
         <div className="col-span-12 flex flex-col gap-[28svh] py-[30svh] lg:col-span-6 lg:col-start-7">

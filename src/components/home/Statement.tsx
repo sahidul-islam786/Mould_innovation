@@ -32,7 +32,16 @@ export function Statement() {
 
   return (
     <section ref={section} aria-labelledby="statement-title" className="surface-ink relative flex min-h-[120svh] flex-col justify-end overflow-hidden pb-[clamp(4rem,8vw,7rem)] pt-[55svh]">
-      <CinematicScene src="/media/scenes/scene-2.webp" position="60% 40%" mobilePosition="62% 40%" shade="bottom" travel="forward" />
+      <CinematicScene
+        src="/media/scenes/scene-2.webp"
+        position="60% 40%"
+        mobilePosition="62% 40%"
+        shade="bottom"
+        travel="forward"
+        editorialText="AUTOMATION"
+        editorialPosition="center"
+        telemetry={{ code: "WORLD 02", label: "AUTOMATION FACTORY", coordinates: "LINE 07 · ROBOTICS COMPLEX" }}
+      />
       <div className="wrap relative">
         <div className="grid grid-cols-12 gap-6">
           <p className="eyebrow col-span-12 text-muted-dark lg:col-span-3">

@@ -11,7 +11,15 @@ export const metadata: Metadata = {
 export default function ProjectsPage() {
   return (
     <>
-      <PageHero title="Projects" scene={{ src: "/media/scenes/scene-5.webp", position: "55% 40%" }} />
+      <PageHero
+        title="Projects"
+        scene={{
+          src: "/media/scenes/scene-5.webp",
+          position: "55% 40%",
+          editorialText: "NEURAL SYSTEMS",
+          telemetry: { code: "WORLD 05", label: "NEURAL CORE" },
+        }}
+      />
       <ProjectsIndex />
     </>
   );

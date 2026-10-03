@@ -11,13 +11,43 @@ import { company } from "@/data/company";
 export const dynamicParams = false;
 
 // Each service opens in the world that matches it.
-const sceneFor: Record<string, { src: string; position: string }> = {
-  "ai-automation-agents": { src: "/media/scenes/scene-2.webp", position: "60% 40%" },
-  "ai-chatbots-voicebots": { src: "/media/scenes/scene-4.webp", position: "55% 55%" },
-  "custom-ai-apps": { src: "/media/scenes/scene-5.webp", position: "55% 40%" },
-  "data-predictive-analytics": { src: "/media/scenes/scene-3.webp", position: "50% 50%" },
-  "computer-vision-visual-search": { src: "/media/scenes/scene-1.webp", position: "40% 30%" },
-  "ai-consulting-llmops-governance": { src: "/media/scenes/scene-7.webp", position: "50% 45%" },
+const sceneFor: Record<string, { src: string; position: string; editorialText?: string; telemetry?: { code: string; label: string } }> = {
+  "ai-automation-agents": {
+    src: "/media/scenes/scene-2.webp",
+    position: "60% 40%",
+    editorialText: "AUTOMATION",
+    telemetry: { code: "SVC 01", label: "AI AGENTS & AUTOMATION" },
+  },
+  "ai-chatbots-voicebots": {
+    src: "/media/scenes/scene-4.webp",
+    position: "55% 55%",
+    editorialText: "CONVERSATIONAL",
+    telemetry: { code: "SVC 02", label: "CHAT & VOICE BOTS" },
+  },
+  "custom-ai-apps": {
+    src: "/media/scenes/scene-5.webp",
+    position: "55% 40%",
+    editorialText: "NEURAL APPS",
+    telemetry: { code: "SVC 03", label: "CUSTOM RAG & APPS" },
+  },
+  "data-predictive-analytics": {
+    src: "/media/scenes/scene-3.webp",
+    position: "50% 50%",
+    editorialText: "ANALYTICS",
+    telemetry: { code: "SVC 04", label: "PREDICTIVE INTELLIGENCE" },
+  },
+  "computer-vision-visual-search": {
+    src: "/media/scenes/scene-1.webp",
+    position: "40% 30%",
+    editorialText: "VISION",
+    telemetry: { code: "SVC 05", label: "COMPUTER VISION & SEARCH" },
+  },
+  "ai-consulting-llmops-governance": {
+    src: "/media/scenes/scene-7.webp",
+    position: "50% 45%",
+    editorialText: "GOVERNANCE",
+    telemetry: { code: "SVC 06", label: "LLMOPS & SAFE SCALE" },
+  },
 };
 
 export function generateStaticParams() {

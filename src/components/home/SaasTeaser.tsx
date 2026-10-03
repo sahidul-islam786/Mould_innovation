@@ -7,10 +7,21 @@ import { CinematicScene } from "@/components/motion/CinematicScene";
 export function SaasTeaser() {
   return (
     <section aria-labelledby="saas-title" className="surface-ink relative flex min-h-[100svh] flex-col overflow-hidden pb-[clamp(3rem,6vw,5rem)] pt-[clamp(6rem,10vw,9rem)]">
-      <CinematicScene src="/media/scenes/scene-4.webp" position="50% 60%" shade="top" travel="orbit" />
+      <CinematicScene
+        src="/media/scenes/scene-6.webp"
+        position="50% 60%"
+        shade="top"
+        travel="pan"
+        editorialText="CONNECTED INFRASTRUCTURE"
+        editorialPosition="center"
+        telemetry={{ code: "WORLD 06", label: "CONNECTED INFRASTRUCTURE", coordinates: "INTEGRATION // CRM · APIS · AUTOMATION" }}
+      />
       <div className="wrap relative flex flex-1 flex-col justify-between gap-14">
         <div className="max-w-[36rem]">
-          <p className="eyebrow text-muted-dark"><span className="mr-3 text-brand-red-light">05</span>{saas.title}</p>
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <p className="eyebrow text-muted-dark"><span className="mr-3 text-brand-red-light">05</span>{saas.title}</p>
+            <span className="telemetry-tag hidden sm:inline text-white/30">CRM · APIS · DATA PIPELINES</span>
+          </div>
           <RevealText as="h2" id="saas-title" className="font-expanded mt-4 text-h1">
             {saas.product}
           </RevealText>

@@ -12,7 +12,16 @@ export const metadata: Metadata = {
 export default function ServicesPage() {
   return (
     <>
-      <PageHero title="Services" scene={{ src: "/media/scenes/scene-2.webp", position: "60% 40%" }} lead={`${home.introLead} ${home.introAudience} ${home.introOutcomes.join(" ")}`} />
+      <PageHero
+        title="Services"
+        scene={{
+          src: "/media/scenes/scene-3.webp",
+          position: "60% 40%",
+          editorialText: "AUTONOMOUS SYSTEMS",
+          telemetry: { code: "WORLD 03", label: "AUTONOMOUS SYSTEMS" },
+        }}
+        lead={`${home.introLead} ${home.introAudience} ${home.introOutcomes.join(" ")}`}
+      />
       <ServicesIndex />
     </>
   );

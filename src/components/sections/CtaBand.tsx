@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { RevealText } from "@/components/motion/RevealText";
 import { Button } from "@/components/buttons/Button";
@@ -16,7 +17,15 @@ export function CtaBand() {
 
   return (
     <section aria-labelledby="cta-title" className="surface-ink relative overflow-hidden">
-      <CinematicScene src="/media/scenes/scene-7.webp" position="50% 45%" shade="bottom" travel="pullback" />
+      <CinematicScene
+        src="/media/scenes/scene-7.webp"
+        position="50% 45%"
+        shade="bottom"
+        travel="pullback"
+        editorialText="FUTURE CITY"
+        editorialPosition="center"
+        telemetry={{ code: "WORLD 07", label: "FUTURE CITY", coordinates: "HORIZON // SCALE DEPLOYMENT" }}
+      />
       <div className="wrap relative flex min-h-[92svh] flex-col items-center justify-end pb-[clamp(4rem,8vw,7rem)] pt-24 text-center">
         <div className="relative z-10 flex flex-col items-center">
           <p className="eyebrow text-brand-red-light">{home.ctaKicker}</p>
@@ -31,7 +40,16 @@ export function CtaBand() {
               Send us a message
             </Button>
           </div>
-          <a href={`mailto:${company.email}`} className="mt-8 inline-block text-lg text-paper/80 underline decoration-line-dark underline-offset-8 hover:text-paper hover:decoration-brand-red">
+          <div className="mt-6 flex items-center justify-center gap-6 text-sm text-paper/60">
+            <Link href="/careers/" className="hover:text-paper transition-colors underline decoration-white/20 underline-offset-4">
+              Careers
+            </Link>
+            <span aria-hidden className="text-brand-red-light">·</span>
+            <Link href="/contact/" className="hover:text-paper transition-colors underline decoration-white/20 underline-offset-4">
+              Contact
+            </Link>
+          </div>
+          <a href={`mailto:${company.email}`} className="mt-6 inline-block text-lg text-paper/80 underline decoration-line-dark underline-offset-8 hover:text-paper hover:decoration-brand-red">
             {company.email}
           </a>
         </div>
