@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Manrope, Sora } from "next/font/google";
+import { Manrope, Sora, Space_Grotesk } from "next/font/google";
 import "lenis/dist/lenis.css";
 import "./globals.css";
 import { Header } from "@/components/navigation/Header";
@@ -9,9 +9,10 @@ import { SmoothScroll } from "@/components/motion/SmoothScroll";
 import { Cursor } from "@/components/motion/Cursor";
 import { company } from "@/data/company";
 
-// Display: Sora (headings). Body/UI: Manrope. Two families only.
+// Display: Sora (headings). Body/UI: Manrope. Editorial: Space Grotesk (spatial backdrop words).
 const sora = Sora({ subsets: ["latin"], variable: "--font-display", display: "swap" });
 const manrope = Manrope({ subsets: ["latin"], variable: "--font-body", display: "swap" });
+const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-editorial", display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(company.siteUrl),
@@ -26,7 +27,7 @@ export const viewport: Viewport = { themeColor: "#0b0b0c" };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${sora.variable} ${manrope.variable} antialiased`} suppressHydrationWarning>
+    <html lang="en" className={`${sora.variable} ${manrope.variable} ${spaceGrotesk.variable} antialiased`} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
       </head>

@@ -19,7 +19,8 @@ export function Statement() {
     () => {
       const mm = gsap.matchMedia();
       mm.add("(prefers-reduced-motion: no-preference)", () => {
-        gsap.fromTo(section.current, { clipPath: "inset(6% 4% 0% 4%)" }, { clipPath: "inset(0% 0% 0% 0%)", ease: "none", scrollTrigger: { trigger: section.current, start: "top bottom", end: "top 30%", scrub: true } });
+        // GPU-compositable reveal: opacity + translateY (no layout thrash unlike clipPath)
+        gsap.fromTo(section.current, { opacity: 0.4, y: 40 }, { opacity: 1, y: 0, ease: "none", scrollTrigger: { trigger: section.current, start: "top bottom", end: "top 40%", scrub: true } });
         const split = SplitText.create("[data-words]", { type: "words" });
         gsap.fromTo(split.words, { opacity: 0.16 }, { opacity: 1, stagger: 0.05, ease: "none", scrollTrigger: { trigger: "[data-words]", start: "top 75%", end: "bottom 45%", scrub: true } });
         gsap.from("[data-grid-line]", { scaleX: 0, transformOrigin: "left", duration: 1.2, ease: "power3.inOut", stagger: 0.1, scrollTrigger: { trigger: section.current, start: "top 70%", once: true } });
@@ -32,7 +33,16 @@ export function Statement() {
 
   return (
     <section ref={section} aria-labelledby="statement-title" className="surface-ink relative flex min-h-[120svh] flex-col justify-end overflow-hidden pb-[clamp(4rem,8vw,7rem)] pt-[55svh]">
-      <CinematicScene src="/media/scenes/scene-2.webp" position="60% 40%" mobilePosition="62% 40%" shade="bottom" travel="forward" />
+      <CinematicScene
+        src="/media/scenes/scene-2.webp"
+        position="60% 40%"
+        mobilePosition="62% 40%"
+        shade="bottom"
+        travel="forward"
+        editorialText="AUTOMATION"
+        editorialPosition="center"
+        telemetry={{ code: "WORLD 02", label: "AUTOMATION FACTORY", coordinates: "LINE 07 · ROBOTICS COMPLEX" }}
+      />
       <div className="wrap relative">
         <div className="grid grid-cols-12 gap-6">
           <p className="eyebrow col-span-12 text-muted-dark lg:col-span-3">

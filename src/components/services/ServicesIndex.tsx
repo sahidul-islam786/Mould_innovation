@@ -16,7 +16,15 @@ export function ServicesIndex() {
   return (
     <section className="surface-ink relative pb-[clamp(5rem,10vw,8rem)]">
       <div className="sticky top-0 h-[100svh] overflow-hidden">
-        <CinematicScene src="/media/scenes/scene-6.webp" position="65% 50%" shade="left" travel="diagonal" />
+        <CinematicScene
+          src="/media/scenes/scene-3.webp"
+          position="65% 50%"
+          shade="left"
+          travel="diagonal"
+          editorialText="AUTONOMOUS SYSTEMS"
+          editorialPosition="center"
+          telemetry={{ code: "WORLD 03", label: "AUTONOMOUS SYSTEMS", coordinates: "SYS // SERVICES PORTFOLIO" }}
+        />
       </div>
       <div className="wrap relative -mt-[100svh] grid gap-12 pt-[10svh] lg:grid-cols-12">
         <Reveal variant="stagger" className="border-t border-line-dark lg:col-span-7">

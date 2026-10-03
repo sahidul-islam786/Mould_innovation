@@ -19,11 +19,24 @@ const serviceFor: Record<string, string> = {
 export function Capabilities() {
   return (
     <section aria-labelledby="cap-title" className="surface-ink relative overflow-hidden py-[clamp(6rem,11vw,10rem)]">
-      <CinematicScene src="/media/scenes/scene-3.webp" position="50% 50%" shade="center" travel="vertical" />
+      <CinematicScene
+        src="/media/scenes/scene-4.webp"
+        position="50% 50%"
+        shade="center"
+        travel="vertical"
+        editorialText="DATA OCEAN"
+        editorialPosition="center"
+        telemetry={{ code: "WORLD 04", label: "DATA OCEAN", coordinates: "SCALE // PETABYTE FLOW · LIVE" }}
+      />
       <div className="wrap relative">
-        <p className="eyebrow text-muted-dark">
-          <span className="mr-3 text-brand-red-light">03</span>Expertise
-        </p>
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <p className="eyebrow text-muted-dark">
+            <span className="mr-3 text-brand-red-light">03</span>Expertise
+          </p>
+          <span className="telemetry-tag hidden sm:inline text-white/30">
+            DATA · INTELLIGENCE · ANALYTICS
+          </span>
+        </div>
         <RevealText as="h2" id="cap-title" className="font-expanded mt-4 max-w-[16ch] text-h2">
           {home.expertiseLead}
         </RevealText>

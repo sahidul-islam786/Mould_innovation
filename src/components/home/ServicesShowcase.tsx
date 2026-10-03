@@ -49,7 +49,16 @@ export function ServicesShowcase() {
   return (
     <section ref={section} aria-labelledby="services-title" className="surface-ink">
       <div data-pin className="relative overflow-hidden lg:h-[100svh]">
-        <CinematicScene src="/media/scenes/scene-6.webp" position="60% 50%" mobilePosition="65% 50%" shade="left" travel="diagonal" />
+        <CinematicScene
+          src="/media/scenes/scene-3.webp"
+          position="60% 50%"
+          mobilePosition="65% 50%"
+          shade="left"
+          travel="diagonal"
+          editorialText="AUTONOMOUS SYSTEMS"
+          editorialPosition="center"
+          telemetry={{ code: "WORLD 03", label: "AUTONOMOUS SYSTEMS", coordinates: "NODE 12 · MULTI-AGENT SWARM" }}
+        />
 
         <div className="wrap relative flex h-full flex-col justify-center py-[clamp(4rem,7vw,6rem)] lg:py-[calc(var(--header-h)+1rem)]">
           <div className="flex items-end justify-between gap-6">
@@ -81,10 +90,12 @@ export function ServicesShowcase() {
                       onMouseEnter={() => select(i)}
                       onFocus={() => select(i)}
                       aria-current={on ? "true" : undefined}
-                      className="group grid grid-cols-[3rem_1fr] items-baseline gap-x-4 py-4 lg:grid-cols-[3.5rem_1fr]"
+                      className="group grid grid-cols-[3rem_1fr] items-baseline gap-x-4 py-4 lg:grid-cols-[3.5rem_1fr] transition-transform duration-300"
                     >
-                      <span className={`eyebrow transition-colors ${on ? "text-brand-red-light" : "text-paper/35"}`}>{String(i + 1).padStart(2, "0")}</span>
-                      <span className={`font-semi-expanded text-[clamp(1.125rem,1.7vw,1.5rem)] transition-colors duration-[var(--dur-standard)] ${on ? "text-paper" : "text-paper/45 group-hover:text-paper/80"}`}>
+                      <span className={`eyebrow transition-all duration-300 ${on ? "text-brand-red-light translate-x-1" : "text-paper/35 group-hover:text-brand-red-light group-hover:translate-x-0.5"}`}>
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <span className={`font-semi-expanded text-[clamp(1.125rem,1.7vw,1.5rem)] transition-all duration-[var(--dur-standard)] ${on ? "text-paper" : "text-paper/45 group-hover:text-paper group-hover:translate-x-1"}`}>
                         {item.title}
                       </span>
                       {/* Desktop: the active row opens to show its tagline and text. Mobile: always open. */}

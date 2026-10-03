@@ -20,12 +20,28 @@ export function PageHero({
   lead?: string;
   crumbs?: Crumb[];
   visual?: ReactNode;
-  scene?: { src: string; position?: string; mobilePosition?: string };
+  scene?: {
+    src: string;
+    position?: string;
+    mobilePosition?: string;
+    editorialText?: string;
+    telemetry?: { code: string; label: string; coordinates?: string };
+  };
   children?: ReactNode;
 }) {
   return (
     <section className={`surface-ink relative overflow-hidden ${scene ? "" : "tech-grid"}`}>
-      {scene && <CinematicScene src={scene.src} position={scene.position} mobilePosition={scene.mobilePosition} shade="left" travel="in" />}
+      {scene && (
+        <CinematicScene
+          src={scene.src}
+          position={scene.position}
+          mobilePosition={scene.mobilePosition}
+          shade="left"
+          travel="in"
+          editorialText={scene.editorialText}
+          telemetry={scene.telemetry}
+        />
+      )}
       <div className={`wrap relative grid ${scene ? "min-h-[78svh]" : "min-h-[62svh]"} items-end gap-10 pb-[clamp(3rem,7vw,6rem)] pt-[calc(var(--header-h)+3rem)] lg:grid-cols-12`}>
         <div className="relative z-10 lg:col-span-7">
           {crumbs && (

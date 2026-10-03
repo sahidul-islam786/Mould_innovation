@@ -13,7 +13,16 @@ export const metadata: Metadata = {
 export default function CareersPage() {
   return (
     <>
-      <PageHero kicker="Careers" title={careersIntro} scene={{ src: "/media/scenes/scene-6.webp", position: "60% 50%" }} />
+      <PageHero
+        kicker="Careers"
+        title={careersIntro}
+        scene={{
+          src: "/media/scenes/scene-7.webp",
+          position: "60% 50%",
+          editorialText: "FUTURE CITY",
+          telemetry: { code: "WORLD 07", label: "FUTURE CITY" },
+        }}
+      />
       <section className="surface-paper py-[clamp(4rem,8vw,7rem)]">
         <Reveal variant="stagger" className="wrap border-t border-line-light">
           {jobs.map((j, i) => (
