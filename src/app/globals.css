@@ -293,10 +293,9 @@ body {
   }
 }
 
-/* Cinematic scene layers */
-.cinematic-mask {
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 12%, #000 88%, transparent 100%);
-  mask-image: linear-gradient(to bottom, transparent 0, #000 12%, #000 88%, transparent 100%);
+/* Cinematic scene: contain paints within the section boundary */
+.cinematic-section {
+  contain: layout style;
 }
 
 /* Small source images are upscaled: a touch of softening and contrast keeps them cinematic, not pixelated. */

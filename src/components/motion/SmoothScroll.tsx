@@ -21,13 +21,14 @@ export function SmoothScroll() {
 
   useEffect(() => {
     if (reduced) return;
-    // Wheel input is eased (lerp 0.085); touch keeps the browser's own native scrolling.
-    const instance = new Lenis({ lerp: 0.065, anchors: true, syncTouch: false });
+    // Wheel: lerp 0.10 balances smoothness vs per-frame work (0.065 was too CPU-heavy).
+    // wheelMultiplier 1.1 = snappier response without jank.
+    const instance = new Lenis({ lerp: 0.1, wheelMultiplier: 1.1, anchors: true, syncTouch: false });
     lenis = instance;
     instance.on("scroll", ScrollTrigger.update);
     const tick = (time: number) => instance.raf(time * 1000);
     gsap.ticker.add(tick);
-    gsap.ticker.lagSmoothing(0);
+    gsap.ticker.lagSmoothing(0); // prevent GSAP from skipping frames during heavy load
     return () => {
       gsap.ticker.remove(tick);
       instance.destroy();

@@ -106,16 +106,14 @@ export function CinematicScene({
 
         const tl = gsap.timeline({
           defaults: { ease: "none", force3D: true },
-          scrollTrigger: { trigger: section, start: "top bottom", end: "bottom top", scrub: 1.1, refreshPriority: -1 },
+          scrollTrigger: { trigger: section, start: "top bottom", end: "bottom top", scrub: true, refreshPriority: -1 },
         });
 
-        // Background artwork camera travel
-        tl.fromTo(img, from, { ...to, duration: 1, ease: "sine.inOut" }, 0)
-          // Atmospheric dust midground motion
-          .fromTo(dust, { yPercent: -12 * k }, { yPercent: 12 * k, duration: 1 }, 0)
-          // Smooth scene entrance and exit
-          .fromTo(el, { opacity: 0.25 }, { opacity: 1, duration: 0.28, ease: "power1.out" }, 0)
-          .to(el, { opacity: 0.45, duration: 0.25, ease: "power1.in" }, 0.75);
+        // Background artwork camera travel — single GPU composite, no layout
+        tl.fromTo(img, from, { ...to, duration: 1, ease: "sine.inOut" }, 0);
+
+        // Atmospheric dust midground motion — subtle depth layer, no opacity change
+        tl.fromTo(dust, { yPercent: -8 }, { yPercent: 8, duration: 1 }, 0);
 
         // Editorial display typography parallax (independent midground layer)
         if (editorial) {
@@ -127,9 +125,9 @@ export function CinematicScene({
           );
         }
 
-        // Telemetry subtle fade & drift
+        // Telemetry subtle fade
         if (telemetryEl) {
-          tl.fromTo(telemetryEl, { opacity: 0.4 }, { opacity: 0.85, duration: 0.5, ease: "power2.out" }, 0.1);
+          tl.fromTo(telemetryEl, { opacity: 0.5 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 0.1);
         }
 
         // Desktop subtle mouse-based depth interaction
@@ -186,7 +184,7 @@ export function CinematicScene({
   }[editorialPosition];
 
   return (
-    <div ref={root} aria-hidden className="cinematic-mask pointer-events-none absolute inset-0 overflow-hidden bg-ink [perspective:1600px] [transform:translateZ(0)] will-change-[opacity]">
+    <div ref={root} aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden bg-ink [transform:translateZ(0)] will-change-[transform]">
       {/* Background artwork layer */}
       <div data-scene-img className="absolute inset-[-2.5%] will-change-transform">
         <picture>
@@ -224,11 +222,11 @@ export function CinematicScene({
       <div className="absolute inset-0 bg-[radial-gradient(130%_100%_at_50%_45%,transparent_52%,rgb(11_11_12/0.65)_100%)] pointer-events-none" />
       <div className="absolute inset-0 pointer-events-none" style={{ background: shadeBg[shade] }} />
 
-      {/* Technical Telemetry badge (industrial tech aesthetic) */}
+      {/* Technical Telemetry badge (industrial tech aesthetic — solid bg, no blur for performance) */}
       {telemetry && (
         <div
           data-scene-telemetry
-          className="absolute bottom-6 right-6 z-10 hidden md:flex items-center gap-3 rounded-full border border-white/10 bg-ink/75 px-3.5 py-1.5 backdrop-blur-md"
+          className="absolute bottom-6 right-6 z-10 hidden md:flex items-center gap-3 rounded-full border border-white/10 bg-ink/90 px-3.5 py-1.5"
         >
           <span className="relative flex h-2 w-2">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-red opacity-75" />

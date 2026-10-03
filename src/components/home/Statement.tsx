@@ -19,7 +19,8 @@ export function Statement() {
     () => {
       const mm = gsap.matchMedia();
       mm.add("(prefers-reduced-motion: no-preference)", () => {
-        gsap.fromTo(section.current, { clipPath: "inset(6% 4% 0% 4%)" }, { clipPath: "inset(0% 0% 0% 0%)", ease: "none", scrollTrigger: { trigger: section.current, start: "top bottom", end: "top 30%", scrub: true } });
+        // GPU-compositable reveal: opacity + translateY (no layout thrash unlike clipPath)
+        gsap.fromTo(section.current, { opacity: 0.4, y: 40 }, { opacity: 1, y: 0, ease: "none", scrollTrigger: { trigger: section.current, start: "top bottom", end: "top 40%", scrub: true } });
         const split = SplitText.create("[data-words]", { type: "words" });
         gsap.fromTo(split.words, { opacity: 0.16 }, { opacity: 1, stagger: 0.05, ease: "none", scrollTrigger: { trigger: "[data-words]", start: "top 75%", end: "bottom 45%", scrub: true } });
         gsap.from("[data-grid-line]", { scaleX: 0, transformOrigin: "left", duration: 1.2, ease: "power3.inOut", stagger: 0.1, scrollTrigger: { trigger: section.current, start: "top 70%", once: true } });
