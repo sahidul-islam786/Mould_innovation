@@ -22,7 +22,7 @@ export function SmoothScroll() {
   useEffect(() => {
     if (reduced) return;
     // Wheel input is eased (lerp 0.085); touch keeps the browser's own native scrolling.
-    const instance = new Lenis({ lerp: 0.085, anchors: true, syncTouch: false });
+    const instance = new Lenis({ lerp: 0.065, anchors: true, syncTouch: false });
     lenis = instance;
     instance.on("scroll", ScrollTrigger.update);
     const tick = (time: number) => instance.raf(time * 1000);

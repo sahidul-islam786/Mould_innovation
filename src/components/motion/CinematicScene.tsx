@@ -24,23 +24,23 @@ type Pose = { scale: number; xPercent?: number; yPercent?: number; rotateY?: num
 
 const PATHS: Record<Travel, [Pose, Pose]> = {
   // World 1: The Intelligence World — slow forward approach, slight horizontal drift revealing robot details
-  approach: [{ scale: 1.0, xPercent: 1.5, yPercent: 0 }, { scale: 1.08, xPercent: -1.5, yPercent: -1 }],
+  approach: [{ scale: 1.0, xPercent: 1.5, yPercent: 0 }, { scale: 1.05, xPercent: -1.5, yPercent: -1 }],
   // World 2: The Automation Factory — slow forward travel through factory, machinery depth
-  forward: [{ scale: 1.0, yPercent: 2, xPercent: 0 }, { scale: 1.10, yPercent: -2.5, xPercent: 0 }],
+  forward: [{ scale: 1.0, yPercent: 2, xPercent: 0 }, { scale: 1.06, yPercent: -2.5, xPercent: 0 }],
   // World 3: Autonomous Systems — subtle diagonal travel across linked robotic systems
-  diagonal: [{ scale: 1.03, xPercent: -3, yPercent: 2.5 }, { scale: 1.09, xPercent: 3, yPercent: -2.5 }],
+  diagonal: [{ scale: 1.02, xPercent: -3, yPercent: 2.5 }, { scale: 1.06, xPercent: 3, yPercent: -2.5 }],
   // World 4: The Data Ocean — travel forward and slightly upward, enormous data scale
-  vertical: [{ scale: 1.0, yPercent: 3.5, xPercent: 0 }, { scale: 1.08, yPercent: -3.5, xPercent: 0 }],
+  vertical: [{ scale: 1.0, yPercent: 3.5, xPercent: 0 }, { scale: 1.05, yPercent: -3.5, xPercent: 0 }],
   // World 5: The Neural Core — very subtle orbital / lateral movement around core structure
-  orbit: [{ scale: 1.05, rotateY: 2.5, xPercent: 2 }, { scale: 1.05, rotateY: -2.5, xPercent: -2 }],
+  orbit: [{ scale: 1.03, rotateY: 2.5, xPercent: 2 }, { scale: 1.03, rotateY: -2.5, xPercent: -2 }],
   // World 6: Connected Infrastructure — slow horizontal movement through connected modules
-  pan: [{ scale: 1.04, xPercent: 3.5 }, { scale: 1.04, xPercent: -3.5 }],
+  pan: [{ scale: 1.02, xPercent: 3.5 }, { scale: 1.02, xPercent: -3.5 }],
   // World 7: The Future City — slow cinematic pull-back revealing scale of entire intelligent infrastructure
-  pullback: [{ scale: 1.12, yPercent: -2 }, { scale: 1.0, yPercent: 2 }],
-  left: [{ scale: 1.07, xPercent: 2.5, rotateY: -2 }, { scale: 1.0, xPercent: -2.5, rotateY: 2 }],
-  right: [{ scale: 1.07, xPercent: -2.5, rotateY: 2 }, { scale: 1.0, xPercent: 2.5, rotateY: -2 }],
-  up: [{ scale: 1.07, yPercent: 3, rotateX: -2 }, { scale: 1.0, yPercent: -3, rotateX: 2 }],
-  in: [{ scale: 1.07 }, { scale: 1.10 }],
+  pullback: [{ scale: 1.07, yPercent: -2 }, { scale: 1.0, yPercent: 2 }],
+  left: [{ scale: 1.05, xPercent: 2.5, rotateY: -2 }, { scale: 1.0, xPercent: -2.5, rotateY: 2 }],
+  right: [{ scale: 1.05, xPercent: -2.5, rotateY: 2 }, { scale: 1.0, xPercent: 2.5, rotateY: -2 }],
+  up: [{ scale: 1.05, yPercent: 3, rotateX: -2 }, { scale: 1.0, yPercent: -3, rotateX: 2 }],
+  in: [{ scale: 1.03 }, { scale: 1.06 }],
 };
 
 export type TelemetryInfo = {
@@ -106,7 +106,7 @@ export function CinematicScene({
 
         const tl = gsap.timeline({
           defaults: { ease: "none", force3D: true },
-          scrollTrigger: { trigger: section, start: "top bottom", end: "bottom top", scrub: 0.65, refreshPriority: -1 },
+          scrollTrigger: { trigger: section, start: "top bottom", end: "bottom top", scrub: 1.1, refreshPriority: -1 },
         });
 
         // Background artwork camera travel
@@ -188,7 +188,7 @@ export function CinematicScene({
   return (
     <div ref={root} aria-hidden className="cinematic-mask pointer-events-none absolute inset-0 overflow-hidden bg-ink [perspective:1600px] [transform:translateZ(0)] will-change-[opacity]">
       {/* Background artwork layer */}
-      <div data-scene-img className="absolute inset-[-4%] will-change-transform">
+      <div data-scene-img className="absolute inset-[-2.5%] will-change-transform">
         <picture>
           <source type="image/avif" srcSet={set(src, "avif")} sizes={SIZES} />
           <img

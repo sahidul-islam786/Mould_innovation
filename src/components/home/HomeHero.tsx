@@ -45,7 +45,7 @@ export function HomeHero() {
               end: "+=90%",
               pin: true,
               anticipatePin: 1,
-              scrub: 0.8,
+              scrub: 1.2,
             },
           })
           .to("[data-hero-type]", { yPercent: -18, opacity: 0.12, ease: "power1.in" }, 0)
